@@ -1052,43 +1052,8 @@ function code_to_country($code) {
 function account_details( $id ){
 	global $whmcs, $conn;
 	
-	$postfields["username"]			 = $whmcs['username'];
-	$postfields["password"]			 = $whmcs['password'];
-	$postfields["action"]			 = "getclientsdetails";
-	$postfields["clientid"]			 = $id;  
-
-	$ch = curl_init();
-	curl_setopt( $ch, CURLOPT_URL, $whmcs['url'] );
-	curl_setopt( $ch, CURLOPT_POST, 1 );
-	curl_setopt( $ch, CURLOPT_TIMEOUT, 100 );
-	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
-	curl_setopt( $ch, CURLOPT_POSTFIELDS, $postfields );
-	$data = curl_exec( $ch );
-	curl_close( $ch );
-	
-	$data = explode( ";", $data );
-	foreach( $data AS $temp ) {
-		$temp = explode( "=", $temp );
-		$results[$temp[0]] = $temp[1];
-	}
-	
-	// get account products
-	$results['product_ids']			 	= get_product_ids( $id );
-	$results['products']				= check_products( $id );
-        
-	if( $results["result"] == "success" ) {
-		return $results;
-	} else {
-		// error
-		die( 'billing API error: unable to access your account data, please contact support' );
-	}
-}
-
-function account_details_local( $id ){
-	global $whmcs, $conn;
-	
 	// get local stored user record
-    $query              = $conn->query("SELECT * FROM `users` WHERE `user_id` = '".$id."' ");
+    $query              = $conn->query("SELECT * FROM `users` WHERE `id` = '".$id."' ");
     $data            	= $query->fetch(PDO::FETCH_ASSOC);
         
 	return $data;
