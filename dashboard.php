@@ -1,30 +1,8 @@
 <?php
 
-// error logging
-ini_set( 'display_startup_errors', 1 );
-ini_set( 'display_errors', 1 );
-ini_set( 'error_reporting', E_ALL );
-error_reporting( E_ALL );
-
-// session start
-session_start();
-
-// start timer for page loaded var
-$time = microtime();
-$time = explode( ' ', $time );
-$time = $time[1] + $time[0];
-$start = $time;
-
-// vars
-ini_set("default_socket_timeout", 15);
-ini_set("memory_limit", -1);
-$globals['dev']			 = true;
-$globals['basedir']		 = '/home/cloudshield/public_html/dashboard/';
-
 // include main functions
-include( $globals['basedir'].'includes/db.php' );
-include( $globals['basedir'].'includes/globals.php' );
-include( $globals['basedir'].'includes/functions.php' );
+include( dirname(__FILE__).'/includes/core.php' );
+include( dirname(__FILE__).'/includes/functions.php' );
 
 // login check
 if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
@@ -32,39 +10,12 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 	go( 'index.php' );
 } else {
 	if( !isset( $_SESSION['account_details'] ) ) {
-		$account_details = account_details( $_SESSION['account']['id'] );
+		$account_details = account_details_local( $_SESSION['account']['id'] );
 		$_SESSION['account_details'] = $account_details;
 	} else {
 		$account_details = $_SESSION['account_details'];
 	}
-
-	// calculate allowed vs installed proxies
-	// get installed proxies
-	$account_details['installed_proxies'] 		= total_servers_account_wide();
-
-	// count active allowed proxies
-	$account_details['allowed_proxies'] = 0;
-	foreach( $account_details['products'] as $product ) {
-		if( $product['pid'] == '82' && $product['status'] == 'Active' ) {
-			$account_details['allowed_proxies']++;
-		}
-	}
-
-	if( $account_details['installed_proxies'] >= $account_details['allowed_proxies'] ) {
-		$account_details['allow_more_proxies'] = false;
-	} else {
-		$account_details['allow_more_proxies'] = true;
-	}
-
-	// get local user data
-	$account_details['local_data'] = account_details_local( $_SESSION['account']['id'] );
 }
-
-// geoip database
-require( $globals['basedir'].'assets/geoip/MaxMind-DB-Reader-php/autoload.php' );
-use MaxMind\Db\Reader;
-$geoip = new Reader( $globals['basedir'].'assets/geoip/GeoLite2-City.mmdb' );
-$geoisp = new Reader( $globals['basedir'].'assets/geoip/GeoIP2-ISP.mmdb' );
 
 ?>
 <!DOCTYPE html>
