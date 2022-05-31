@@ -324,13 +324,6 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 		<?php function cluster() { ?>
 			<?php global $conn, $globals, $account_details, $geoip, $geoisp; ?>
 
-			<?php $cluster			  	= get_cluster( get( 'id' ) ); ?>
-			<?php $domain_names 		= get_domain_names(); ?>
-			<?php $controllers		  	= get_servers( get( 'id' ) , 'controller' ); ?>
-			<?php $proxies			  	= get_servers( get( 'id' ) , 'proxy' ); ?>
-			<?php $totals['download']   = 0; ?>
-			<?php $totals['upload']	 	= 0; ?>
-
 			<div id="content" class="content">
 				<ol class="breadcrumb float-xl-right">
 					<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
