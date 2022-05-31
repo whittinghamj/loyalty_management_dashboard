@@ -200,54 +200,36 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 							<span>Dashboard</span> 
 						</a>
 					</li>
-					<li <?php if( get( 'c' ) == 'cluster' || get( 'c' ) == 'clusters' || get( 'c' ) == 'cluster_edit' ) { echo'class="active"'; } ?>>
-						<a href="dashboard.php?c=clusters">
+					<li <?php if( get( 'c' ) == 'project' || get( 'c' ) == 'projects' || get( 'c' ) == 'project_edit' ) { echo'class="active"'; } ?>>
+						<a href="dashboard.php?c=projects">
 							<i class="fa fa-cloud"></i>
-							<span>Clusters</span> 
+							<span>Projects</span> 
 						</a>
 					</li>
-					<li <?php if( get( 'c' ) == 'domain_names' || get( 'c' ) == 'domain_name' ) { echo'class="active"'; } ?>>
-						<a href="dashboard.php?c=domain_names">
-							<i class="fa fa-globe"></i>
-							<span>Domain Names</span> 
+					<li <?php if( get( 'c' ) == 'customers' || get( 'c' ) == 'customer' || get( 'c' ) == 'customer_edit' ) { echo'class="active"'; } ?>>
+						<a href="dashboard.php?c=customers">
+							<i class="fa fa-users"></i>
+							<span>Customers</span> 
 						</a>
 					</li>
-					<?php if( $_SESSION['account']['id'] == 7 ) { ?>
-						<li <?php if( get( 'c' ) == 'smartdns' ) { echo'class="active"'; } ?>>
-							<a href="dashboard.php?c=smartdns">
-								<i class="fa fa-user-secret"></i>
-								<span>SmartDNS</span> 
-							</a>
-						</li>
-						<li <?php if( get( 'c' ) == 'staging' ) { echo'class="active"'; } ?>>
-							<a href="dashboard.php?c=staging">
-								<i class="fa fa-wrench"></i>
-								<span>Staging</span> 
-							</a>
-						</li>
-					<?php } ?>
 					<li>
 						<a href="logout.php">
 							<i class="fa fa-sign-out-alt"></i>
 							<span>Sign Out</span> 
 						</a>
 					</li>
-
-					<!--
-						<li class="has-sub">
-							<a href="javascript:;">
-								<b class="caret"></b>
-								<i class="fa fa-th-large"></i>
-								<span>Dashboard</span>
-							</a>
-							<ul class="sub-menu">
-								<li><a href="index.html">Dashboard v1</a></li>
-								<li><a href="index_v2.html">Dashboard v2</a></li>
-								<li><a href="index_v3.html">Dashboard v3</a></li>
-							</ul>
-						</li>
-					-->
 				</ul>
+
+				<?php if( $account_details['is_platform_admin'] == 'yes' ) { ?>
+					<ul class="nav"><li class="nav-header">Platform Admin</li>
+						<li <?php if( get( 'c' ) == 'users' || get( 'c' ) == 'user' || get( 'c' ) == 'user_edit' ) { echo'class="active"'; } ?>>
+							<a href="dashboard.php?c=users">
+								<i class="fa fa-users"></i>
+								<span>Users</span> 
+							</a>
+						</li>
+					</ul>
+				<?php } ?>
 			</div>
 		</div>
 

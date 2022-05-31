@@ -22,7 +22,6 @@ if( isset( $user['id'] ) ) {
 		// set session vars
 		$_SESSION['logged_in']						= true;
 		$_SESSION['account']['id']					= $user['id'];
-		$_SESSION['account']['is_project_admin']	= $user['is_project_admin'];		
 
 		// save this login
 		$update = $conn->exec( "UPDATE `users` SET `last_login_timestamp` = '".time()."' WHERE `id` = '".$_SESSION['account']['id']."' " );
