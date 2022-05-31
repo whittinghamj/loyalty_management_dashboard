@@ -1,0 +1,14 @@
+## cloudshield cronfile
+
+# disable ping
+# @reboot sudo sh /opt/disable_ping.sh
+
+# disable ipv6
+# @reboot sudo sh /opt/disable_ipv6.sh
+
+# agent
+* * * * * sudo sh /opt/agent.sh
+
+# nginx auto update
+* * * * * sudo bash /opt/controller_auto_reload.sh
+

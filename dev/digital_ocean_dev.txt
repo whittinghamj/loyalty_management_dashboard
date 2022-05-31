@@ -1,0 +1,37 @@
+// API Token
+52f13cbea45cd80d1a0e34af86cd70741decc96abd85576889d183f125b62557
+
+// datacenter locations
+nyc3
+nyc1
+sfo1
+nyc2
+ams2
+sgp1
+lon1
+ams3
+fra1
+tor1
+sfo2
+blr1
+sfo3
+
+// add ssh key
+curl -X POST \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer 52f13cbea45cd80d1a0e34af86cd70741decc96abd85576889d183f125b62557" \
+-d '{"name":"IPTVShield SSH Key","public_key":"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCtCEZyuGJSOBcP7dsD+cqn9YGWgbSycWDxpt1/jbGt896QhH8A3DsS+CC/ivGwKepHCvLT/6mhK7Lc+BdmaMvlO5Ng5Lg3bbp6CPt/0wdBxTVlcfJCGpIpcE9eW2HmtB6Cdm5OHd3yxuDjrbgnjCpX7o+JWfED9ETM2P0oGBtZ2HWTwBhKRrPzCMhMgL9lOdJ+6/ABoafy03mSHWYr9NE0nxhgkhFsvgoEevLWW+Teksd0aeM9gCyX7w9/cGn8FEAOGzxgNDmQsE1UMaVP/rp6CJujBWSoocgFOzO7+/f4yHDIuuEa9J1aoNWhX3WUJzsBrkr59CanXskHr4HlgETQVdvndtu5X245FqlyDVqc1yoJErQHoO1iSQQD+yRBLNQ6QCdvq3mjF4joSG5PVRMIWI/gQ8lLBSTyPxN+cqN6vRmRssbb+LIkLU+pHF0sPEIix+iwOT3esSAPCuKGHRTpIRYvicEhiSd2bzKR/0QdNDRD1DhscMGQ3PoIykLllm8y0jGXJ04Lh0Y5Zgu3eVDLn0mfzQXfyHcw881cQ6g4qehdHPlKJlLWKXl+D9EkncOPRIs+kEPr4FL3fCEF2UQD5itfLvSbkjamKIkuRrO7ngSn4ooTjfOR8YU9AbUqCV3m5p2GikOmshzt8KvGxrkPbz7iXSbpJ390/4/Mfj37Dw=="}' "https://api.digitalocean.com/v2/account/keys"
+
+ID = 28657515
+
+// create a new droplet
+curl -X POST \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer 52f13cbea45cd80d1a0e34af86cd70741decc96abd85576889d183f125b62557" \
+-d '{"name":"example.com","region":"nyc3","size":"s-1vcpu-1gb","image":"ubuntu-18-04-x64","backups":false,"ipv6":false,"user_data":null,"private_networking":null,"volumes": null,"tags":["web"]}' "https://api.digitalocean.com/v2/droplets"
+
+// create multiple droplets
+curl -X POST \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer 52f13cbea45cd80d1a0e34af86cd70741decc96abd85576889d183f125b62557" \
+-d '{"names":["sub-01.example.com","sub-02.example.com","sub-02.example.com","sub-02.example.com","sub-02.example.com","sub-02.example.com","sub-02.example.com","sub-02.example.com","sub-02.example.com","sub-02.example.com"],"region":"nyc3","size":"s-1vcpu-1gb","image":"ubuntu-16-04-x64","ssh_keys":"28657515","backups":false,"ipv6":false,"user_data":null,"private_networking":null,"tags":["web"]}' "https://api.digitalocean.com/v2/droplets"

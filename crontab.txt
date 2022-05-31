@@ -1,0 +1,14 @@
+# server install manager
+* * * * * php -q /home/cloudshield/public_html/dashboard/console/deamon_installer.php >> /home/cloudshield/public_html/dashboard/console/deamon_installer.log
+
+# server reboot manager
+* * * * * php -q /home/cloudshield/public_html/dashboard/console/deamon_server_reboot.php >> /home/cloudshield/public_html/dashboard/console/deamon_server_reboot.log
+
+# domain name check manager
+*/10 * * * * php -q /home/cloudshield/public_html/dashboard/console/deamon_domain_name_checker.php >> /home/cloudshield/public_html/dashboard/console/deamon_domain_name_checker.log
+
+# domain name dns record sync
+*/2 * * * * php -q /home/cloudshield/public_html/dashboard/console/deamon_dns_record_builder.php >> /home/cloudshield/public_html/dashboard/console/deamon_dns_record_builder.log
+
+# server checks
+* * * * * php -q /home/cloudshield/public_html/dashboard/console/deamon_server_checks.php >> /home/cloudshield/public_html/dashboard/console/deamon_server_checks.log

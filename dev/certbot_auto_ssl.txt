@@ -1,0 +1,3 @@
+sudo certbot --agree-tos --no-redirect --no-eff-email --nginx -m webmaster@whitetags.co --nginx -d controller-dev.whitetags.co -d controller-dev.whitetags.co
+
+sudo certbot --agree-tos --no-redirect --no-eff-email --nginx -m webmaster@whitetags.co --nginx -d p017.whitetags.co -d p017.whitetags.co

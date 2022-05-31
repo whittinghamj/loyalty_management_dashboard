@@ -1,0 +1,44 @@
+CloudShield Dev Cluster - notes
+
+demo vod file
+http://xerocool.xyz:80/movie/delta/delta/185651.mp4
+http://dev.cloudshield.io:80/movie/delta/delta/185651.mp4
+
+above forward to 
+ - cloudshield protected = http://cwars.xyz:80/movie/test/test/499.avi
+ - unprotected = http://88.198.31.23/movie/test/test/499.avi
+
+
+
+
+XUI dev cluster sub
+http://167.172.60.80:80/get.php?username=delta&password=admin1372&type=m3u&output=mpegts
+http://dev.cloudshield.io:80/get.php?username=delta&password=admin1372&type=m3u&output=mpegts
+
+
+
+
+sample vod
+http://167.172.60.80:80/movie/delta/admin1372/1.mp4
+http://dev.cloudshield.io:80/movie/delta/admin1372/1.mp4
+
+http://88.198.31.23:80/movie/test/test/499.avi
+
+
+curl --header "X-Forwarded-For: 1.2.3.4" "http://dev.cloudshield.io"
+
+
+
+
+ASN to IP range
+
+whois -h whois.radb.net -- '-i origin AS5607' | grep 'route:'
+whois -h whois.radb.net -- '-i origin AS5607' | grep 'descr'
+deny x.x.x.x/24;
+
+ip route add blackhole 209.97.181.0/24
+ip route del blackhole 209.97.181.0/24
+
+
+
+whois -h whois.cymru.com " -f -p $1"
