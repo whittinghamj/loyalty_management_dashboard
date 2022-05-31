@@ -156,7 +156,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 				<li class="dropdown navbar-user">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<!-- <img src="assets/img/user/user-13.jpg" alt="avatar" /> --> 
-						<span class="d-none d-md-inline" style="color: white;"><?php echo $account_details['firstname'].' '.$account_details['lastname']; ?></span> <b class="caret"></b>
+						<span class="d-none d-md-inline" style="color: white;"><?php echo $account_details['first_name'].' '.$account_details['last_name']; ?></span> <b class="caret"></b>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right">
 						<a href="javascript:;" class="dropdown-item">Edit Profile</a>
