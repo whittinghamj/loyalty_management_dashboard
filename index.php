@@ -48,7 +48,7 @@ include( dirname(__FILE__).'/includes/functions.php' );
         <div class="login login-v2" data-pageload-addclass="animated fadeIn">
             <div class="login-header">
                 <div class="brand">
-                    <img src="assets/img/logo_small.png" width="100%" alt="CloudShield Logo">
+                    <!-- <img src="assets/img/logo_small.png" width="100%" alt="Loyalty Dashboard Logo"> -->
                 </div>
             </div>
 
