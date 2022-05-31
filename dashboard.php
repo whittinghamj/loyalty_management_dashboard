@@ -160,7 +160,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 					</a>
 					<div class="dropdown-menu dropdown-menu-right">
 						<a href="javascript:;" class="dropdown-item">Edit Profile</a>
-						<a href="actions.php?a=whmcs_support" class="dropdown-item" target="_blank">Support Tickets</a>
+						<!-- <a href="actions.php?a=whmcs_support" class="dropdown-item" target="_blank">Support Tickets</a> -->
 						<div class="dropdown-divider"></div>
 						<a href="logout.php" class="dropdown-item">Sign Out</a>
 					</div>
