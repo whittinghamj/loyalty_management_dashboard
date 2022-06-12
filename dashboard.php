@@ -1761,9 +1761,9 @@ if( isset( $platform_text[1] ) ) {
 								<div class="panel-heading-btn">
 									<div class="btn-group">
 										<?php if( $account_details['can_create_projects'] == 'yes') { ?>
-			        						<button class="btn btn-xs btn-green tutorial_add_cluster" data-toggle="modal" data-target="#project_add_modal">Add a Project</button>
+			        						<button class="btn btn-xs btn-green" data-toggle="modal" data-target="#project_add_modal">Add a Project</button>
 										<?php } ?>
-										<button class="btn btn-xs btn-green tutorial_add_cluster" data-toggle="modal" data-target="#project_join_modal">Join a Project</button>
+										<button class="btn btn-xs btn-green" data-toggle="modal" data-target="#project_join_modal">Join a Project</button>
 										<a href="javascript:void(0);" class="btn btn-xs btn-info" onclick="tutorial();">Tutorial &amp; Help</a>
 									</div>
 								</div>
