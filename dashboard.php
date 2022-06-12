@@ -1810,8 +1810,9 @@ if( isset( $platform_text[1] ) ) {
 															<td>
 																<button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">Actions<b class="caret"></b></button>
 																<div class="dropdown-menu dropdown-menu-right" role="menu">
-																	<a href="?c=cluster&id='.$cluster['id'].'" class="dropdown-item">Manage</a>
-																	<a href="?c=cluster_edit&id='.$cluster['id'].'" class="dropdown-item">Edit</a>
+																	<a href="?c=project&id='.$project['id'].'" class="dropdown-item">Manage</a>
+																	
+																	'.( $project['user_id'] == $account_details['id'] ? '<a href="?c=project_edit&id='.$project['id'].'" class="dropdown-item">Edit</a>' : ''.'
 
 																	<a href="actions.php?a=cluster_delete&id='.$cluster['id'].'" class="dropdown-item" onclick="return confirm(\'This will delete all proxies contained in this cluster. Are you sure?\')">Delete</a>
 																</div>
