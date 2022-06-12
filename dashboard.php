@@ -791,7 +791,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 																                  		<div class="col-xl-12">
 																                     		<strong>2. Full Reinstall &amp; Update</strong>
 																                     		<p class="description">
-																                     			This option is only to be used if you have reinstalled your operating system and need to perform a full installation of <?php echo $globals['platform_name']; ?>. Estimated time to install is between 10-15 minutes.
+																                     			This option is only to be used if you have reinstalled your operating system and need to perform a full installation of '.$globals['platform_name'].'. Estimated time to install is between 10-15 minutes.
 																                     		</p>
 																                  		</div>
 																               		</div>
