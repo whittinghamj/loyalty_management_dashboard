@@ -2168,7 +2168,7 @@ if( isset( $platform_text[1] ) ) {
 							<div class="col-xl-12 col-md-12 col-xs-12">
 								<div class="panel panel-inverse">
 									<div class="panel-heading">
-										<h4 class="panel-title">SMTP Settings</h4>
+										<h4 class="panel-title">MailGun SMTP Settings</h4>
 										<div class="panel-heading-btn">
 											<div class="btn-group">
 												<!-- <a href="javascript:void(0);" class="btn btn-xs btn-info" onclick="tutorial_1();">Tutorial &amp; Help</a> -->
@@ -2179,16 +2179,28 @@ if( isset( $platform_text[1] ) ) {
 										<div class="row">
 											<div class="col-xl-6 col-xs-12">
 												<div class="form-group">
-													<label class="bmd-label-floating"><strong>Platform Name</strong></label>
-													<input type="text" name="platform_name" class="form-control" value="<?php echo $globals['platform_name']; ?>" required/>
-													<small>Example: Loyalty Dashboard</small>
+													<label class="bmd-label-floating"><strong>Username</strong></label>
+													<input type="text" name="smtp_username" class="form-control" value="<?php echo $globals['smtp_username']; ?>"/>
 												</div>
 											</div>
 											<div class="col-xl-6 col-xs-12">
 												<div class="form-group tutorial_ssh_port">
-													<label class="bmd-label-floating"><strong>Platform URL</strong></label>
-													<input type="text" name="url" class="form-control" value="<?php echo $globals['url']; ?>" required/>
+													<label class="bmd-label-floating"><strong>Password</strong></label>
+													<input type="text" name="smtp_password" class="form-control" value="<?php echo $globals['smtp_password']; ?>"/>
+												</div>
+											</div>
+											<div class="col-xl-6 col-xs-12">
+												<div class="form-group tutorial_ssh_port">
+													<label class="bmd-label-floating"><strong>Domain</strong></label>
+													<input type="text" name="smtp_domain" class="form-control" value="<?php echo $globals['smtp_domain']; ?>"/>
 													<small>Example: loyaltydashboard.io</small>
+												</div>
+											</div>
+											<div class="col-xl-6 col-xs-12">
+												<div class="form-group tutorial_ssh_port">
+													<label class="bmd-label-floating"><strong>Sender Name</strong></label>
+													<input type="text" name="smtp_name" class="form-control" value="<?php echo $globals['smtp_name']; ?>"/>
+													<small>Example: Loyalty Dashboard</small>
 												</div>
 											</div>
 										</div>
@@ -2198,14 +2210,10 @@ if( isset( $platform_text[1] ) ) {
 						</div>
 
 						<div class="row">
-							<div class="col-xl-12">
-								<div class="panel">
-									<div class="panel-body">
-										<div class="row">
-											<a href="?c=home" type="button" class="btn btn-xs btn-primary">Back</a>
-											<button type="submit" class="btn btn-xs btn-green pull-right tutorial_settings_save_1">Save Changes</button>
-										</div>
-									</div>
+							<div class="col-xl-12 col-md-12 col-xs-12">
+								<div class="panel-footer">
+									<a href="?c=clusters" type="button" class="btn btn-xs btn-primary">Back</a>
+									<button type="submit" class="btn btn-xs btn-green pull-right tutorial_settings_save_1">Save Changes</button>
 								</div>
 							</div>
 						</div>
