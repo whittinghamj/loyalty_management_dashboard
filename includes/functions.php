@@ -494,21 +494,6 @@ function total_servers( $id ) {
 	return $data;
 }
 
-function total_servers( $id , $type ) {
-	global $conn, $account_details, $globals, $whmcs;
-
-	$query = $conn->query( "
-		SELECT count(`id`) as total_servers 
-		FROM `servers` 
-		WHERE `cluster_id` = '".$id."'
-		AND `user_id` = '".$_SESSION['account']['id']."' 
-		AND `type` = '".$type."' 
-	" );
-	$results	= $query->fetch( PDO::FETCH_ASSOC );
-	$data	   = $results['total_servers'];
-
-	return $data;
-}
 
 function total_servers_account_wide() {
 	global $conn, $account_details, $globals, $whmcs;
