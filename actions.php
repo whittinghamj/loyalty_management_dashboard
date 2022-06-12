@@ -63,10 +63,10 @@ function settings_edit() {
 	// map fields
 	$platform_name 						= post( 'platform_name' );
 	$url 								= post( 'url' );
-	$smtp_username 						= post( 'iptv_main_server_ip_address' );
-	$smtp_password 						= post( 'iptv_main_server_port' );
-	$smtp_domain 						= post( 'notes' );
-	$smtp_name 							= post( 'enable_stalker' );
+	$smtp_username 						= post( 'smtp_username' );
+	$smtp_password 						= post( 'smtp_password' );
+	$smtp_domain 						= post( 'smtp_domain' );
+	$smtp_name 							= post( 'smtp_name' );
 	$dev 								= post( 'dev' );
 
 	// save data
