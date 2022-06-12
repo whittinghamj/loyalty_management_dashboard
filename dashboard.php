@@ -2030,7 +2030,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 					</div>
 					<div class="col-xl-3 col-md-6">
 						<div class="widget widget-stats bg-info tutorial_total_controllers">
-							<div class="stats-icon"><i class="fa fa-server"></i></div>
+							<div class="stats-icon"><i class="fa fa-btc"></i></div>
 							<div class="stats-info">
 								<h4>Tokens</h4>
 								<p><?php echo total_tokens(); ?></p>	
