@@ -18,6 +18,11 @@ switch( $a ) {
         accept_terms();
         break;
 
+	// project_add
+	case "project_add":
+		project_add();
+		break;
+
 	// settings_edit
 	case "settings_edit":
 		settings_edit();
@@ -86,92 +91,54 @@ function settings_edit() {
 	go( 'dashboard.php?c=settings' );
 }
 
-function blocked_network_add() {
-	global $conn, $globals, $account_details;
-
-	// map fields
-	$cluster_id 					= post( 'id' );
-	$asn 							= post( 'asn' );
-
-	// prepare asn
-	$asn = str_replace( 'AS', '' , $asn );
-	$asn = 'AS'.$asn;
-
-	// find network name
-	$asn_data = @file_get_contents( 'https://api.bgpview.io/asn/'.$asn );
-	$asn_data = json_decode( $asn_data, true );
-	$asn_network_name = $asn_data['data']['description_short'];
-
-	if( empty( $asn_network_name ) ) {
-		status_message( "danger", "Unknown ASN, please try again." );
-		go( 'dashboard.php?c=cluster_edit&id='.$cluster_id );
-	}
-
-	// save data
-	$insert = $conn->exec( "INSERT IGNORE INTO `cluster_blocked_networks` 
-		(`user_id`,`cluster_id`,`asn`,`network_name`)
-		VALUE
-		('".$_SESSION['account']['id']."', 
-		'".$cluster_id."', 
-		'".$asn."',
-		'".$asn_network_name."'
-	)" );
-
-	// set status message
-	status_message( "success", "Network Block has been added." );
-
-	// redirect to dashboard.php
-	go( 'dashboard.php?c=cluster_edit&id='.$cluster_id );
-}
-
-function blocked_network_delete() {
-	global $conn, $globals, $account_details;
-
-	// map fields
-	$id 							= get( 'id' );
-	$cluster_id 					= get( 'cluster_id' );
-
-	// get cluster
-	$cluster = get_cluster( $cluster_id );
-
-	// security check
-	if( !isset( $cluster['id'] ) ) { go( 'dashboard.php?c=not_found' ); }
-
-	// delete nlocked_network
-	$delete = $conn->exec( "DELETE FROM `cluster_blocked_networks` WHERE `id` = '".$id."' AND `cluster_id` = '".$cluster_id."' AND `user_id` = '".$_SESSION['account']['id']."' " );
-
-	// set status message
-	status_message( "success", "Network Block has been deleted." );
-
-	// redirect to dashboard.php
-	go( 'dashboard.php?c=cluster_edit&id='.$cluster_id );
-}
-
-function cluster_add() {
+function project_add() {
 	global $conn, $globals, $account_details;
 
 	// map fields
 	$name 							= post( 'name' );
-	$type 							= post( 'type' );
 
 	// save data
-	$insert = $conn->exec( "INSERT INTO `clusters` 
-		(`added`,`user_id`,`name`,`type`)
+	$insert = $conn->exec( "INSERT INTO `projects` 
+		(`added`,`user_id`,`name`)
 		VALUE
 		('".time()."',
 		'".$_SESSION['account']['id']."', 
-		'".$name."', 
-		'".$type."'
+		'".$name."' 
 	)" );
 	
 	// get new record id
-	$cluster_id = $conn->lastInsertId();
+	$project_id = $conn->lastInsertId();
 
 	// set status message
-	status_message( "success", "Cluster has been created." );
+	status_message( "success", "Project has been added." );
 
 	// redirect to dashboard.php
-	go( 'dashboard.php?c=cluster_edit&id='.$cluster_id );
+	go( 'dashboard.php?c=project&id='.$project_id );
+}
+
+function project_join() {
+	global $conn, $globals, $account_details;
+
+	// map fields
+	$name 							= post( 'name' );
+
+	// save data
+	$insert = $conn->exec( "INSERT INTO `projects` 
+		(`added`,`user_id`,`name`)
+		VALUE
+		('".time()."',
+		'".$_SESSION['account']['id']."', 
+		'".$name."' 
+	)" );
+	
+	// get new record id
+	$project_id = $conn->lastInsertId();
+
+	// set status message
+	status_message( "success", "Project has been added." );
+
+	// redirect to dashboard.php
+	go( 'dashboard.php?c=project&id='.$project_id );
 }
 
 function cluster_edit() {

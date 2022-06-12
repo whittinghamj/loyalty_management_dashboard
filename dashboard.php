@@ -1844,67 +1844,6 @@ if( isset( $platform_text[1] ) ) {
 				</div>
 			</div>
 
-			<div class="modal fade" id="cluster_example_modal" tabindex="-1" role="dialog" aria-labelledby="cluster_example_modal" aria-hidden="true">
-			   	<div class="modal-dialog modal-notice modal-xl">
-			      	<div class="modal-content">
-			         	<div class="modal-header">
-			            	<h5 class="modal-title" id="myModalLabel">How Clusters Work</h5>
-			            	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-			            		x
-			            	</button>
-			         	</div>
-			         	<div class="modal-body">
-		               		<div class="row">
-		               			<div class="col-md-6 col-sm-12">
-		               				Welcome to <?php echo $globals['platform_name']; ?>. <br>
-		               				<br>
-									<?php echo $globals['platform_name']; ?> is a next generation content filtering, protection and performance platform, making it impossible for anyone, with malicious intent or otherwise, to make direct contact with your origin server(s), or to locate, identify or damage them in any way. <br>
-									<br>
-									Based on the principle of using proxy servers as a shield between your customers (or anyone else) and your origin server(s), and using the 'cluster' concept, you have one or more controller servers that manage your cluster of secure proxy servers. When anyone enters your website address the controller first checks that the connection is an authentic one and not a direct security risk, and then selects a suitable proxy server to direct the customer to. <br>
-									<br>
-									Once the customer connection has been passed to a suitable proxy server, it is the proxy server that will communicate with your origin server(s) directly and not your customer. This improves performance and security as each controller and proxy has multiple security checkpoints to mitigate any security risk. This includes SQL Injection, Sniffing, Port Scanning and many others. Once the proxy obtains the requested information from your origin server it is then relayed back to the customer. This happens for every connection request so it is important to make sure you have the correct number of available proxy servers in the cluster to support your customers and their traffic. <br>
-									<br>
-									This image on the right hand side is a very basic example of what happens when a connection is made to the cluster and how the customer never interacts with your origin servers directly. Your cluster must collectively have enough bandwidth to equally match that available over all your origin servers combined. So, if you have a combined bandwidth of 50Gbit over all your origin servers then you must have 50Gbit available over your entire cluster. We highly recommend that your cluster servers have 1Gbit connections and not higher connection rates. This enables the cluster to evenly spread your customers over the entire cluster. This presents you with the added benefit of increased redundancy and greater performance. <br>
-									<br>
-									If you have more questions, please submit a support ticket. 
-		               			</div>
-		               			<div class="col-md-6 col-sm-12">
-		                  			<img src="assets/img/cluster_example.svg" width="100%" alt="Example Reverse Cluster">
-		                  		</div>
-		               		</div>
-			         	</div>
-			         	<div class="modal-footer">
-			         		<div class="btn-group">
-								<button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Cancel</button>
-							</div>
-						</div>
-			      	</div>
-			   	</div>
-			</div>
-
-			<div class="modal fade" id="cluster_wizard_modal" tabindex="-1" role="dialog" aria-labelledby="cluster_wizard_modal" aria-hidden="true">
-			   	<div class="modal-dialog modal-notice modal-xl">
-			      	<div class="modal-content">
-			         	<div class="modal-header">
-			            	<h5 class="modal-title" id="myModalLabel">Cluster Design Wizard</h5>
-			            	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-			            		x
-			            	</button>
-			         	</div>
-			         	<div class="modal-body">
-		               		<div class="row">
-		               			<div class="col-md-6 col-sm-12">
-		               				This function is not available yet.
-		               			</div>
-		               		</div>
-			         	</div>
-			         	<div class="modal-footer">
-							<button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Cancel</button>
-						</div>
-			      	</div>
-			   	</div>
-			</div>
-
 			<form class="form" method="post" action="actions.php?a=project_join">
 				<div class="modal fade" id="project_join_modal" tabindex="-1" role="dialog" aria-labelledby="project_join_modal" aria-hidden="true">
 				   	<div class="modal-dialog modal-notice">
@@ -1961,18 +1900,7 @@ if( isset( $platform_text[1] ) ) {
 										<div class="form-group">
 											<label class="bmd-label-floating"><strong>Name</strong></label>
 											<input type="text" name="name" class="form-control" required/>
-											<small>Example: Awesome Cluster</small>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-xl-12">
-										<div class="form-group">
-											<label class="bmd-label-floating"><strong>Cluster Type</strong></label>
-											<select name="type" class="default-select2 form-control">
-												<option value="byos" selected>Bring Your Own Servers</option>
-												<option value="digitalocean" disabled>DigitalOcean Smart Cluster - Coming Soon</option>
-											</select>
+											<small>Example: Epic Project</small>
 										</div>
 									</div>
 								</div>
@@ -1980,7 +1908,7 @@ if( isset( $platform_text[1] ) ) {
 				         	<div class="modal-footer">
 				         		<div class="btn-group">
 									<button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Cancel</button>
-									<button type="submit" class="btn btn-xs btn-green">Add Cluster</button>
+									<button type="submit" class="btn btn-xs btn-green">Add Project</button>
 								</div>
 							</div>
 				      	</div>
