@@ -1104,7 +1104,7 @@ if( isset( $platform_text[1] ) ) {
 																<div class="dropdown-menu dropdown-menu-right" role="menu">
 																	<a href="?c=cluster&id='.$cluster['id'].'" class="dropdown-item">Manage</a>
 																	<a href="?c=cluster_edit&id='.$cluster['id'].'" class="dropdown-item">Edit</a>
-																	
+
 																	<a href="actions.php?a=cluster_delete&id='.$cluster['id'].'" class="dropdown-item" onclick="return confirm(\'This will delete all proxies contained in this cluster. Are you sure?\')">Delete</a>
 																</div>
 															</td>
@@ -2094,8 +2094,6 @@ if( isset( $platform_text[1] ) ) {
 					<div id="status_message"></div>
 
 					<form class="form" method="post" action="actions.php?a=settings_edit">
-						<input type="hidden" name="id" value="<?php echo $server['id']; ?>">
-
 						<div class="row">
 							<div class="col-xl-12 col-md-12 col-xs-12">
 								<div class="panel panel-inverse">
