@@ -437,6 +437,20 @@ function total_projects() {
 	return $data;
 }
 
+function total_tokens() {
+	global $conn, $account_details, $globals, $whmcs;
+
+	$query = $conn->query( "
+		SELECT count(`id`) as total_tokens 
+		FROM `user_tokens` 
+		WHERE `user_id` = '".$_SESSION['account']['id']."' 
+	" );
+	$results	= $query->fetch( PDO::FETCH_ASSOC );
+	$data	   = $results['total_tokens'];
+
+	return $data;
+}
+
 function total_domain_names() {
 	global $conn, $account_details, $globals, $whmcs;
 
