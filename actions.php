@@ -10,10 +10,6 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 	go( 'index.php' );
 }
 
-echo '<pre>';
-print_r($_SESSION);
-die();
-
 $a = get( 'a' );
 
 switch( $a ) {
@@ -161,6 +157,16 @@ function home() {
 
 function accept_terms() {
 	global $conn, $globals, $account_details;
+
+	echo '<pre>';
+	print_r($conn);
+	print_r($globals);
+	print_r($account_details);
+	print_r($_SESSION);
+
+	echo "UPDATE `users` SET `accept_terms` = 'yes' WHERE `id` = '".$_SESSION['account']['id']."' ";
+	
+	die();
 
 	// save data
 	$update = $conn->exec( "UPDATE `users` SET `accept_terms` = 'yes' WHERE `id` = '".$_SESSION['account']['id']."' " );
