@@ -1762,9 +1762,8 @@ if( isset( $platform_text[1] ) ) {
 									<div class="btn-group">
 										<?php if( $account_details['can_create_projects'] == 'yes') { ?>
 			        						<button class="btn btn-xs btn-green tutorial_add_cluster" data-toggle="modal" data-target="#project_add_modal">Add a Project</button>
-										<?php } else{ ?>
-			        						<button class="btn btn-xs btn-green tutorial_add_cluster" data-toggle="modal" data-target="#project_join_modal">Join a Project</button>
 										<?php } ?>
+										<button class="btn btn-xs btn-green tutorial_add_cluster" data-toggle="modal" data-target="#project_join_modal">Join a Project</button>
 										<a href="javascript:void(0);" class="btn btn-xs btn-info" onclick="tutorial();">Tutorial &amp; Help</a>
 									</div>
 								</div>
@@ -1884,12 +1883,12 @@ if( isset( $platform_text[1] ) ) {
 			   	</div>
 			</div>
 
-			<form class="form" method="post" action="actions.php?a=cluster_add">
-				<div class="modal fade" id="cluster_add_modal" tabindex="-1" role="dialog" aria-labelledby="cluster_add_modal" aria-hidden="true">
+			<form class="form" method="post" action="actions.php?a=project_join">
+				<div class="modal fade" id="project_join_modal" tabindex="-1" role="dialog" aria-labelledby="cluster_add_modal" aria-hidden="true">
 				   	<div class="modal-dialog modal-notice">
 				      	<div class="modal-content">
 				         	<div class="modal-header">
-				            	<h5 class="modal-title" id="myModalLabel">Add Cluster</h5>
+				            	<h5 class="modal-title" id="myModalLabel">Join a Project</h5>
 				            	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 				            		x
 				            	</button>
