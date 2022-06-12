@@ -2146,40 +2146,16 @@ if( isset( $platform_text[1] ) ) {
 										<div class="row">
 											<div class="col-xl-6 col-xs-12">
 												<div class="form-group">
-													<label class="bmd-label-floating"><strong>IP Address</strong></label>
-													<input type="text" name="ip_address" class="form-control" value="<?php echo $server['ip_address']; ?>" readonly/>
-													<small>Example: 1.2.3.4</small>
+													<label class="bmd-label-floating"><strong>Platform Name</strong></label>
+													<input type="text" name="platform_name" class="form-control" value="<?php echo $globals['platform_name']; ?>" required/>
+													<small>Example: Loyalty Dashboard</small>
 												</div>
 											</div>
 											<div class="col-xl-6 col-xs-12">
 												<div class="form-group tutorial_ssh_port">
-													<label class="bmd-label-floating"><strong>SSH Port</strong></label>
-													<input type="text" name="ssh_port" class="form-control" value="<?php echo $server['ssh_port']; ?>" required/>
-													<small>Example: 22</small>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-xl-6 col-xs-12">
-												<div class="form-group tutorial_ssh_username">
-													<label class="bmd-label-floating"><strong>SSH Username</strong></label>
-													<input type="text" name="ssh_username" class="form-control" value="<?php echo $server['ssh_username']; ?>" required/>
-													<small>This user <strong>MUST</strong> have full sudo permissions.</small>
-												</div>
-											</div>
-											<div class="col-xl-6 col-xs-12">
-												<div class="form-group tutorial_ssh_password">
-													<label class="bmd-label-floating"><strong>SSH Password</strong></label>
-													<input type="text" name="ssh_password" class="form-control" value="<?php echo $server['ssh_password']; ?>" required/>
-													<small>Enter the password for the SSH User.</small>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-xl-12 col-xs-12">
-												<div class="form-group tutorial_notes">
-													<label class="bmd-label-floating"><strong>Notes</strong></label>
-													<textarea name="notes" class="form-control"><?php echo $server['notes'];?></textarea>
+													<label class="bmd-label-floating"><strong>Platform URL</strong></label>
+													<input type="text" name="url" class="form-control" value="<?php echo $globals['url']; ?>" required/>
+													<small>Example: loyaltydashboard.io</small>
 												</div>
 											</div>
 										</div>
