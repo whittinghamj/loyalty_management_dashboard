@@ -191,6 +191,21 @@ function get_projects() {
 	return $data;
 }
 
+function get_user_tokens() {
+	global $conn, $account_details, $globals, $whmcs;
+
+	$query = $conn->query( "
+		SELECT * 
+		FROM `user_tokens` 
+	" );
+
+	$data		   = $query->fetchAll( PDO::FETCH_ASSOC );
+
+	$data = stripslashes_deep( $data );
+
+	return $data;
+}
+
 function get_domain_name( $id ) {
 	global $conn, $account_details, $globals, $whmcs;
 

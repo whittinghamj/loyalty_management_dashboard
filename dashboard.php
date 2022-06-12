@@ -1742,6 +1742,7 @@ if( isset( $platform_text[1] ) ) {
 			<?php global $conn, $globals, $account_details, $geoip, $geoisp; ?>
 
 			<?php $projects = get_projects(); ?>
+			<?php $user_tokens = get_user_tokens(); ?>
 
 			<div id="content" class="content">
 				<ol class="breadcrumb float-xl-right">
@@ -1777,6 +1778,7 @@ if( isset( $platform_text[1] ) ) {
 											<tr>
 												<th class="text-nowrap"><strong>Project</strong></th>
 												<th class="text-nowrap"><strong>URL</strong></th>
+												<th class="text-nowrap" width="1px"><strong>Membership</strong></th>
 												<th class="text-nowrap" width="1px"><strong>Status</strong></th>
 												<th class="text-nowrap" data-orderable="false" width="1px"><strong>Actions</strong></th>
 											</tr>
@@ -1785,6 +1787,15 @@ if( isset( $platform_text[1] ) ) {
 											<?php
 												// build table
 												foreach( $projects as $project ) {
+
+													// membership
+													foreach( $user_tokens as $user_token ) {
+														if( $user_token['project_id'] == $project['id'] ) {
+															$project['membership_styled'] = '<button class="btn btn-xs btn-success btn-block">Member</button>';
+														} else {
+															$project['membership_styled'] = '<button class="btn btn-xs btn-success btn-block">Not a Member</button>';
+														}
+													}
 
 													// project status
 													if( $project['status'] == 'active' ) { 
@@ -1803,6 +1814,9 @@ if( isset( $platform_text[1] ) ) {
 															</td>
 															<td>
 																'.$project['url'].' 
+															</td>
+															<td>
+																'.$project['membership_styled'].' 
 															</td>
 															<td>
 																'.$project['status_styled'].' 
