@@ -2040,32 +2040,6 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 							</div>
 						</div>
 					</div>
-					<!--
-						<div class="col-xl-3 col-md-6">
-							<div class="widget widget-stats bg-orange tutorial_total_proxies">
-								<div class="stats-icon"><i class="fa fa-network-wired"></i></div>
-								<div class="stats-info">
-									<h4>Proxies / Licenses</h4>
-									<p><?php echo total_servers_account_wide(); ?> / <?php echo $account_details['allowed_proxies']; ?></p>	
-								</div>
-								<div class="stats-link">
-									<a href="javascript:;">Total Installed Proxies</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-md-6">
-							<div class="widget widget-stats bg-red tutorial_total_domains">
-								<div class="stats-icon"><i class="fa fa-globe"></i></div>
-								<div class="stats-info">
-									<h4>Domain Names</h4>
-									<p><?php echo total_domain_names(); ?></p>	
-								</div>
-								<div class="stats-link">
-									<a href="?c=domain_names">View Domain Names <i class="fa fa-arrow-alt-circle-right"></i></a>
-								</div>
-							</div>
-						</div>
-					-->
 				</div>
 
 				<div class="row">
