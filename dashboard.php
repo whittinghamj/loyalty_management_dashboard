@@ -193,6 +193,24 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 						</li>
 					</ul>
 				-->
+				
+				<?php if( $account_details['is_platform_admin'] == 'yes' ) { ?>
+					<ul class="nav"><li class="nav-header">Platform Admin</li>
+						<li <?php if( get( 'c' ) == 'users' || get( 'c' ) == 'user' || get( 'c' ) == 'user_edit' ) { echo'class="active"'; } ?>>
+							<a href="dashboard.php?c=users">
+								<i class="fa fa-users"></i>
+								<span>Users</span> 
+							</a>
+						</li>
+						<li <?php if( get( 'c' ) == 'settings' ) { echo'class="active"'; } ?>>
+							<a href="dashboard.php?c=settings">
+								<i class="fa fa-cogs"></i>
+								<span>Users</span> 
+							</a>
+						</li>
+					</ul>
+				<?php } ?>
+
 				<ul class="nav"><li class="nav-header">Navigation</li>
 					<li <?php if( get( 'c' ) == '' || get( 'c' ) == 'home' ) { echo'class="active"'; } ?>>
 						<a href="dashboard.php">
@@ -219,23 +237,6 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 						</a>
 					</li>
 				</ul>
-
-				<?php if( $account_details['is_platform_admin'] == 'yes' ) { ?>
-					<ul class="nav"><li class="nav-header">Platform Admin</li>
-						<li <?php if( get( 'c' ) == 'users' || get( 'c' ) == 'user' || get( 'c' ) == 'user_edit' ) { echo'class="active"'; } ?>>
-							<a href="dashboard.php?c=users">
-								<i class="fa fa-users"></i>
-								<span>Users</span> 
-							</a>
-						</li>
-						<li <?php if( get( 'c' ) == 'settings' ) { echo'class="active"'; } ?>>
-							<a href="dashboard.php?c=settings">
-								<i class="fa fa-cogs"></i>
-								<span>Users</span> 
-							</a>
-						</li>
-					</ul>
-				<?php } ?>
 			</div>
 		</div>
 
