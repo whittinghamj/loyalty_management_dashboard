@@ -153,6 +153,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 						</div>
 					</li>
 				-->
+				
 				<li class="dropdown navbar-user">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<!-- <img src="assets/img/user/user-13.jpg" alt="avatar" /> --> 
@@ -203,7 +204,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 							</a>
 						</li>
 						<li <?php if( get( 'c' ) == 'settings' ) { echo'class="active"'; } ?>>
-							<a href="dashboard.php?c=settings">
+							<a href="dashboard.php?c=platform_settings">
 								<i class="fa fa-cogs"></i>
 								<span>Platform Settings</span> 
 							</a>
@@ -253,36 +254,6 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
                     account_settings();
                     break;
 
-                // cluster
-				case "cluster":
-					cluster();
-					break;
-
-				// cluster_add
-				case "cluster_add":
-					cluster_add();
-					break;
-
-				// cluster_edit
-				case "cluster_edit":
-					cluster_edit();
-					break;
-
-                // clusters
-				case "clusters":
-					clusters();
-					break;
-
-				// domain_name
-                case "domain_name":
-                    domain_name();
-                    break;
-
-                // domain_names
-                case "domain_names":
-                    domain_names();
-                    break;
-
                 // home
                 case "home":
                     home();
@@ -293,14 +264,9 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 					not_found();
 					break;
 
-				// smartdns
-                case "smartdns":
-                    smartdns();
-                    break;
-
-				// server_edit
-				case "server_edit":
-					server_edit();
+				// platform settings
+				case "platform_settings":
+					platform_settings();
 					break;
 
 				// default
@@ -2107,23 +2073,18 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 			</div>
 		<?php } ?>
 
-		<?php function server_edit() { ?>
+		<?php function platform_settings() { ?>
 			<?php global $conn, $globals, $account_details, $geoip, $geoisp; ?>
-
-			<?php $server = get_server( get( 'id' ) ); ?>
-			<?php $cluster = get_cluster( $server['cluster_id'] ); ?>
 
 			<div id="content" class="content">
 				<ol class="breadcrumb float-xl-right">
 					<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-					<li class="breadcrumb-item"><a href="dashboard.php?c=clusters">Clusters</a></li>
-					<li class="breadcrumb-item"><a href="dashboard.php?c=cluster&id=<?php echo $cluster['id']; ?>">Edit Cluster: <?php echo $cluster['name']; ?></a></li>
-					<li class="breadcrumb-item active">Edit Server: <?php if( isset( $server['id'] ) ) { echo $server['hostname'].' '.$server['ip_address']; } ?></li>
+					<li class="breadcrumb-item active">Platform Settings</li>
 				</ol>
 
-				<h1 class="page-header">Edit Server: <?php if( isset( $server['id'] ) ) { echo $server['hostname'].' '.$server['ip_address']; } ?></h1>
+				<h1 class="page-header">Platform Settings</h1>
 
-				<?php if( !isset( $server['id'] ) ) { ?>
+				<?php if( $account_details['is_platform_admin'] == 'no' ) { ?>
 					<div class="row">
 						<div class="col-xl-12">
 							<div class="panel panel-danger">
@@ -2145,23 +2106,25 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 										<div class="col-xl-10">
 											<div id="status_message"></div>
 										</div>
-										<div class="col-xl-2 text-right">
-											<a href="?c=cluster&id=<?php echo $cluster['id'];?>" type="button" class="btn btn-xs btn-primary">Manage Cluster</a>
-										</div>
+										<!--
+											<div class="col-xl-2 text-right">
+												<a href="?c=cluster&id=<?php echo $cluster['id'];?>" type="button" class="btn btn-xs btn-primary">Manage Cluster</a>
+											</div>
+										-->
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 
-					<form class="form" method="post" action="actions.php?a=server_edit">
+					<form class="form" method="post" action="actions.php?a=platform_settings_edit">
 						<input type="hidden" name="id" value="<?php echo $server['id']; ?>">
 
 						<div class="row">
 							<div class="col-xl-12 col-md-12 col-xs-12">
 								<div class="panel panel-inverse">
 									<div class="panel-heading">
-										<h4 class="panel-title">Server Settings</h4>
+										<h4 class="panel-title">Platform Name</h4>
 										<div class="panel-heading-btn">
 											<div class="btn-group">
 												<a href="javascript:void(0);" class="btn btn-xs btn-info" onclick="tutorial_1();">Tutorial &amp; Help</a>
@@ -2221,104 +2184,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 				<?php } ?>
 			</div>
 		<?php } ?>
-
-		<?php function smartdns() { ?>
-			<?php global $conn, $globals, $account_details, $geoip, $geoisp; ?>
-
-			<div id="content" class="content">
-				<ol class="breadcrumb float-xl-right">
-					<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-					<li class="breadcrumb-item active">SmartDNS</li>
-				</ol>
-
-				<h1 class="page-header">SmartDNS</h1>
-
-				<div class="row">
-					<div class="col-xl-12 col-xs-12">
-						<div class="panel panel-inverse">
-							<div class="panel-heading">
-								<h4 class="panel-title">SmartDNS Servers</h4>
-							</div>
-							<div class="panel-body">
-								<?php echo $globals['platform_name']; ?> operates multiple SmartDNS servers that are 100% free to use. These are not your average DNS servers though, these are SmartDNS servers with some awesome features. Your ISP tracks, stores and sells data on everything you do online. The websites you visit, duration online and what you search on Google. Never have to worry about this ever again.<br>
-								<br>
-								<em>"SmartDNS is a technology based on using your DNS (Domain Name Server) to unblock geo-restricted sites and services. It's somewhat similar to how VPN servers route your internet traffic through a remote server to hide your real IP address and physical location."</em> <br>
-								<br>
-								<ul>
-  									<li>We <strong><u>NEVER</u></strong> collect, share or sell your browsing data</li>
-  									<li>Ultra Fast, Latest Generation Hardware</li>
-  									<li>Hosted in Tier 4 Datacenters </li>
-  									<li>Multiple Redundent Uplink Connections</li>
-  									<li>Geo Unlocking Facilities</li>
-  									<li>Free For <strong><u>EVERYONE</u></strong></li>
-  								</ul>
-
-  								Currently we have the following SmartDNS servers available. <br>
-  								<br>
-  								<div class="row">
-									<div class="col-xl-4 col-md-4 col-xs-12">
-										<div class="form-group">
-											<label class="bmd-label-floating"><strong>Canada</strong></label>
-											<div class="input-group">
-												<div class="input-group-prepend"><span class="input-group-text"><img src="assets/img/flags/CA.png" height="18px" alt="Canada flag"></span></div>
-												<input type="text" class="form-control" value="134.122.37.24" readonly/>
-											</div>
-										</div>
-									</div>
-									<div class="col-xl-4 col-md-4 col-xs-12">
-										<div class="form-group">
-											<label class="bmd-label-floating"><strong>United Kingdom</strong></label>
-											<div class="input-group">
-												<div class="input-group-prepend"><span class="input-group-text"><img src="assets/img/flags/GB.png" height="18px" alt="United Kingdom flag"></span></div>
-												<input type="text" class="form-control" value="159.242.105.79" readonly/>
-											</div>
-										</div>
-									</div>
-									<div class="col-xl-4 col-md-4 col-xs-12">
-										<div class="form-group">
-											<label class="bmd-label-floating"><strong>United States</strong></label>
-											<div class="input-group">
-												<div class="input-group-prepend"><span class="input-group-text"><img src="assets/img/flags/US.png" height="18px" alt="United States flag"></span></div>
-												<input type="text" class="form-control" value="157.230.11.65" readonly/>
-											</div>
-										</div>
-									</div>
-								</div>
-								<br>
-								Once you have entered one of the above IP addresses into your devices DNS Server settings section then you will need to clear you cache for the update to take effect. Once this has been done then navigate the internet as you normally would. Now that you are using a SmartDNS server, geographically locked content should not be available to you. For example, trying to access BBC iPlayer from outside the UK will result in a content locked message. When using the UK SmartDNS server, this will no longer be a problem and the locked content will now be available to you. <br>
-								<br>
-								Feel free to use our SmartDNS servers when ever and wherever you like, on your computer, your cell phone or even your servers. Help us spread the word and get your friends and family involved as well. Trust us, they will thank you for it.
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		<?php } ?>
 		
-		<?php function template() { ?>
-			<?php global $conn, $globals, $account_details, $geoip, $geoisp; ?>
-			
-			<div id="content" class="content">
-				<ol class="breadcrumb float-xl-right">
-					<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-					<li class="breadcrumb-item"><a href="javascript:;">Page Options</a></li>
-					<li class="breadcrumb-item active">Blank Page</li>
-				</ol>
-				<h1 class="page-header">Blank Page <small>header small text goes here...</small></h1>
-				<div class="panel panel-inverse">
-					<div class="panel-heading">
-						<h4 class="panel-title">Panel Title here</h4>
-						<div class="panel-heading-btn">
-							
-						</div>
-					</div>
-					<div class="panel-body">
-						Panel Content Here
-					</div>
-				</div>
-			</div>
-		<?php } ?>
-
 		<?php function staging() { ?>
 			<?php global $conn, $globals, $account_details, $geoip, $geoisp; ?>
 
@@ -2354,7 +2220,32 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 					</div>
 				</div>
 			</div>
+		<?php } ?>		
+		
+		<?php function template() { ?>
+			<?php global $conn, $globals, $account_details, $geoip, $geoisp; ?>
+			
+			<div id="content" class="content">
+				<ol class="breadcrumb float-xl-right">
+					<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+					<li class="breadcrumb-item"><a href="javascript:;">Page Options</a></li>
+					<li class="breadcrumb-item active">Blank Page</li>
+				</ol>
+				<h1 class="page-header">Blank Page <small>header small text goes here...</small></h1>
+				<div class="panel panel-inverse">
+					<div class="panel-heading">
+						<h4 class="panel-title">Panel Title here</h4>
+						<div class="panel-heading-btn">
+							
+						</div>
+					</div>
+					<div class="panel-body">
+						Panel Content Here
+					</div>
+				</div>
+			</div>
 		<?php } ?>
+
 
 		<div id="footer" class="footer">
 			<?php echo $globals['copyright']; ?>
