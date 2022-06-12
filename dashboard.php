@@ -215,9 +215,9 @@ if( isset( $platform_text[1] ) ) {
 							</a>
 						</li>
 						<li <?php if( get( 'c' ) == 'settings' ) { echo'class="active"'; } ?>>
-							<a href="dashboard.php?c=platform_settings">
+							<a href="dashboard.php?c=settings">
 								<i class="fa fa-cogs"></i>
-								<span>Platform Settings</span> 
+								<span>Settings</span> 
 							</a>
 						</li>
 					</ul>
@@ -275,9 +275,9 @@ if( isset( $platform_text[1] ) ) {
 					not_found();
 					break;
 
-				// platform settings
-				case "platform_settings":
-					platform_settings();
+				// settings
+				case "settings":
+					settings();
 					break;
 
 				// default
@@ -2090,10 +2090,10 @@ if( isset( $platform_text[1] ) ) {
 			<div id="content" class="content">
 				<ol class="breadcrumb float-xl-right">
 					<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-					<li class="breadcrumb-item active">Platform Settings</li>
+					<li class="breadcrumb-item active">Settings</li>
 				</ol>
 
-				<h1 class="page-header">Platform Settings</h1>
+				<h1 class="page-header">Settings</h1>
 
 				<?php if( $account_details['is_platform_admin'] == 'no' ) { ?>
 					<div class="row">
