@@ -2017,14 +2017,14 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 
 				<div class="row">
 					<div class="col-xl-3 col-md-6">
-						<div class="widget widget-stats bg-blue tutorial_total_clusters">
+						<div class="widget widget-stats bg-blue tutorial_total_projects">
 							<div class="stats-icon"><i class="fa fa-cloud"></i></div>
 							<div class="stats-info">
-								<h4>Clusters</h4>
-								<p><?php echo total_clusters(); ?></p>	
+								<h4>Projects</h4>
+								<p><?php echo total_projects(); ?></p>	
 							</div>
 							<div class="stats-link">
-								<a href="?c=clusters">View Clusters <i class="fa fa-arrow-alt-circle-right"></i></a>
+								<a href="?c=projects">View Projects <i class="fa fa-arrow-alt-circle-right"></i></a>
 							</div>
 						</div>
 					</div>

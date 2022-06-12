@@ -423,16 +423,16 @@ function get_server_admin( $id ) {
     return $data;
 }
 
-function total_clusters() {
+function total_projects() {
 	global $conn, $account_details, $globals, $whmcs;
 
 	$query = $conn->query( "
-		SELECT count(`id`) as total_clusters 
-		FROM `clusters` 
+		SELECT count(`id`) as total_projects 
+		FROM `projects` 
 		WHERE `user_id` = '".$_SESSION['account']['id']."' 
 	" );
 	$results	= $query->fetch( PDO::FETCH_ASSOC );
-	$data	   = $results['total_clusters'];
+	$data	   = $results['total_projects'];
 
 	return $data;
 }
