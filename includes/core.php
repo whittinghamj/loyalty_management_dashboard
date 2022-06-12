@@ -53,13 +53,13 @@ $time = explode( ' ', $time );
 $time = $time[1] + $time[0];
 $start = $time;
 
-// vars
-$globals['dev']			 		= true;
-$globals['basedir']         	= '/home/ufxfin/public_html/loyalty/';
-$globals['smtp_username']       = 'admin@mg.unitedfarmers.finance';
-$globals['smtp_password']       = '532f234ab9569f99c12000eda338b2ac-1d8af1f4-718713cf';
-$globals['smtp_domain']         = 'unitedfarmers.finance';
-$globals['smtp_name']           = 'United Farmers X';
+// site db vars
+$query = $conn->query( "SELECT `name`,`value` FROM `system_settings` " );
+$globals_temp = $query->fetchAll( PDO::FETCH_ASSOC );
+
+foreach( $globals_temp as $bits ) {
+	$globals[$bits['name']] = $bits['value'];
+}
 
 // load database
 $database['hostname']			= '173.248.140.254';
@@ -76,13 +76,6 @@ try{
 	echo $e->getMessage();
 }
 
-// site static vars
-$globals['url']					= 'https://loyalty.unitedfarmers.finance/';
-$globals['domain']              = 'loyalty.unitedfarmers.finance';
-$globals['platform_name']		= 'UFX Loyalty Dashboard';
-$globals['platform_version']	= '1.0.0';
-$globals['copyright']			= 'Written by OTTO1372.';
-
 // get clients ip address
 if( isset( $_SERVER["HTTP_CF_CONNECTING_IP"] ) ) {
     $globals['client_ip'] = $_SERVER["HTTP_CF_CONNECTING_IP"];
@@ -90,12 +83,5 @@ if( isset( $_SERVER["HTTP_CF_CONNECTING_IP"] ) ) {
     $globals['client_ip'] = $_SERVER['REMOTE_ADDR'];
 }
 
-// site db vars
-/*
-$query = $conn->query( "SELECT `name`,`value` FROM `system_settings` " );
-$globals_temp = $query->fetchAll( PDO::FETCH_ASSOC );
-
-foreach( $globals_temp as $bits ) {
-	$globals[$bits['name']] = $bits['value'];
-}
-*/
+// site static vars
+$globals['copyright']			= 'Written by OTTO1372.';
