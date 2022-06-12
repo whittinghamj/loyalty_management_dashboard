@@ -24,7 +24,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 	<meta charset="utf-8" />
 	<title><?php echo $globals['platform_name']; ?></title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
-	<meta content="Advanced next generation content delivery, performance and security platform." name="description" />
+	<meta content="Customer loyalty management platform." name="description" />
 	<meta content="<?php echo $globals['platform_name']; ?>.io" name="author" />
 
     <link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/apple-icon-57x57.png">
@@ -59,8 +59,8 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 	<!-- apple switch -->
 	<link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
 
-	<!-- <?php echo $globals['platform_name']; ?> custom css -->
-	<link href="assets/css/<?php echo $globals['platform_name']; ?>.css" rel="stylesheet" />
+	<!-- custom css -->
+	<link href="assets/css/custom.css" rel="stylesheet" />
 </head>
 
 <body class="boxed-layout">
