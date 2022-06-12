@@ -275,6 +275,16 @@ if( isset( $platform_text[1] ) ) {
 					not_found();
 					break;
 
+				// project
+				case "project":
+					project();
+					break;
+
+				// projects
+				case "projects":
+					projects();
+					break;
+
 				// settings
 				case "settings":
 					settings();
