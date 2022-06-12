@@ -2202,7 +2202,7 @@ if( isset( $platform_text[1] ) ) {
 								<div class="panel">
 									<div class="panel-body">
 										<div class="row">
-											<a href="?c=clusters" type="button" class="btn btn-xs btn-primary">Back</a>
+											<a href="?c=home" type="button" class="btn btn-xs btn-primary">Back</a>
 											<button type="submit" class="btn btn-xs btn-green pull-right tutorial_settings_save_1">Save Changes</button>
 										</div>
 									</div>
