@@ -1036,93 +1036,75 @@ if( isset( $platform_text[1] ) ) {
 			</div>
 		<?php } ?>
 
-		<?php function clusters() { ?>
+		<?php function projects() { ?>
 			<?php global $conn, $globals, $account_details, $geoip, $geoisp; ?>
 
-			<?php $clusters = get_clusters(); ?>
+			<?php $clusters = get_projects(); ?>
 
 			<div id="content" class="content">
 				<ol class="breadcrumb float-xl-right">
 					<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-					<li class="breadcrumb-item active">Clusters</li>
+					<li class="breadcrumb-item active">Projects</li>
 				</ol>
 
-				<h1 class="page-header">Clusters</h1>
+				<h1 class="page-header">Projects</h1>
 
-				<div class="row">
-					<div class="col-xl-12">
-						<div class="panel">
-							<div class="panel-body">
-								<div class="row">
-									<div class="col-xl-12">
-										<div id="status_message"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				<div id="status_message"></div>
 
 				<div class="row">
 					<div class="col-xl-12">
 						<div class="panel panel-inverse">
 							<div class="panel-heading">
-								<h4 class="panel-title">Clusters</h4>
+								<h4 class="panel-title">Projects</h4>
 								<div class="panel-heading-btn">
 									<div class="btn-group">
-										<button class="btn btn-xs btn-secondary tutorial_example_cluster" data-toggle="modal" data-target="#cluster_example_modal">How Clusters Work</button>
-		        						<button class="btn btn-xs btn-warning tutorial_cluster_wizard" data-toggle="modal" data-target="#cluster_wizard_modal">Cluster Wizard</button>
-		        						<button class="btn btn-xs btn-green tutorial_add_cluster" data-toggle="modal" data-target="#cluster_add_modal">Add Cluster</button>
+										<?php if( $account_details['can_create_projects'] == 'yes') { ?>
+			        						<button class="btn btn-xs btn-green tutorial_add_cluster" data-toggle="modal" data-target="#project_add_modal">Add a Project</button>
+										<?php } else{ ?>
+			        						<button class="btn btn-xs btn-green tutorial_add_cluster" data-toggle="modal" data-target="#project_join_modal">Join a Project</button>
+										<?php } ?>
 										<a href="javascript:void(0);" class="btn btn-xs btn-info" onclick="tutorial();">Tutorial &amp; Help</a>
 									</div>
 								</div>
 							</div>
 							<div class="panel-body">
-								<?php if( !isset( $clusters[0]['id'] ) ) { ?>
+								<?php if( !isset( $projects[0]['id'] ) ) { ?>
 									<center>
-										<h2>You need to add a Cluster.</h2>
+										<?php if( $account_details['can_create_projects'] == 'yes') { ?>
+											<h2>You need to add a Project.</h2>
+										<?php } else { ?>
+											<h2>You need to join a Project.</h2>
+										<?php } ?>
 									</center>
 								<?php } else { ?>
 									<table id="table_clusters" class="table table-striped table-bordered table-td-valign-middle">
 										<thead>
 											<tr>
-												<th class="text-nowrap"><strong>Name</strong></th>
-												<th class="text-nowrap"><strong>Domain</strong></th>
-												<th class="text-nowrap" width="1px"><strong>Origin IP</strong></th>
-												<th class="text-nowrap" data-orderable="false" width="1px"><strong>Origin Port</strong></th>
-												<th class="text-nowrap" width="1px"><strong>Proxies</strong></th>
+												<th class="text-nowrap"><strong>Project</strong></th>
+												<th class="text-nowrap"><strong>URL</strong></th>
 												<th class="text-nowrap" data-orderable="false" width="1px"><strong>Actions</strong></th>
 											</tr>
 										</thead>
 										<tbody>
 											<?php
 												// build table
-												foreach( $clusters as $cluster ) {
+												foreach( $projects as $project ) {
 
 													// output
 													echo '
 														<tr>
 															<td>
-																'.$cluster['name'].' 
-																'.( $cluster['state'] == 'maintenance' ? '<a href="actions.php?a=cluster_state&state=live&id='.$cluster['id'].'" type="button" class="btn btn-xs btn-warning"><i class="fa fa-tools"></i></a>' : '' ).'
+																'.$project['name'].' 
 															</td>
 															<td>
-																'.$cluster['iptv_main_server_domain'].'
-															</td>
-															<td>
-																'.$cluster['iptv_main_server_ip_address'].'
-															</td>
-															<td>
-																'.$cluster['iptv_main_server_port'].'
-															</td>
-															<td>
-																'.total_servers( $cluster['id'] , 'proxy').'
+																'.$project['url'].' 
 															</td>
 															<td>
 																<button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">Actions<b class="caret"></b></button>
 																<div class="dropdown-menu dropdown-menu-right" role="menu">
 																	<a href="?c=cluster&id='.$cluster['id'].'" class="dropdown-item">Manage</a>
 																	<a href="?c=cluster_edit&id='.$cluster['id'].'" class="dropdown-item">Edit</a>
+																	
 																	<a href="actions.php?a=cluster_delete&id='.$cluster['id'].'" class="dropdown-item" onclick="return confirm(\'This will delete all proxies contained in this cluster. Are you sure?\')">Delete</a>
 																</div>
 															</td>

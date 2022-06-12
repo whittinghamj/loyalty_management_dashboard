@@ -175,12 +175,12 @@ function search_multi_array( $dataArray, $search_value, $key_to_search ) {
 	return $keys;
 }
 
-function get_clusters() {
+function get_projects() {
 	global $conn, $account_details, $globals, $whmcs;
 
 	$query = $conn->query( "
 		SELECT * 
-		FROM `clusters` 
+		FROM `projects` 
 		WHERE `user_id` = '".$_SESSION['account']['id']."' 
 		AND `status` = 'active' 
 	" );
