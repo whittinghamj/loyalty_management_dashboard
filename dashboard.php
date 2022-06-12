@@ -18,7 +18,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 }
 
 // build platform logo text
-$platform_text = explode( $globals['platform_name'] );
+$platform_text = explode( ' ', $globals['platform_name'] );
 if( isset( $platform_text[1] ) ) {
 	$name_1 = $platform_text[0];
 	unset( $platform_text[0] );
