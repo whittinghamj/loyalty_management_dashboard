@@ -9,12 +9,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 	// redirect to index.php
 	go( 'index.php' );
 } else {
-	if( !isset( $_SESSION['account_details'] ) ) {
-		$account_details = account_details( $_SESSION['account']['id'] );
-		$_SESSION['account_details'] = $account_details;
-	} else {
-		$account_details = $_SESSION['account_details'];
-	}
+	$account_details = $_SESSION['account_details'];
 }
 
 ?>

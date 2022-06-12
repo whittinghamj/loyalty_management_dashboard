@@ -438,7 +438,7 @@ function total_clusters() {
 }
 
 function total_domain_names() {
-global $conn, $account_details, $globals, $whmcs;
+	global $conn, $account_details, $globals, $whmcs;
 
 	$query = $conn->query( "
 		SELECT count(`id`) as total_domain_names 
@@ -1050,12 +1050,12 @@ function code_to_country($code) {
 }
 
 function account_details( $id ){
-	global $whmcs, $conn;
+	global $conn, $globals;
 	
 	// get local stored user record
-    $query              = $conn->query("SELECT * FROM `users` WHERE `id` = '".$id."' ");
-    $data            	= $query->fetch(PDO::FETCH_ASSOC);
-        
+    $query              = $conn->query( "SELECT * FROM `users` WHERE `id` = '".$id."' " );
+    $data            	= $query->fetch( PDO::FETCH_ASSOC );
+	
 	return $data;
 
 }
