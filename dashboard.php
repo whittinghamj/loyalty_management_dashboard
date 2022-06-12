@@ -82,7 +82,7 @@ if( isset( $platform_text[1] ) ) {
 	<div id="page-container" class="page-container fade page-sidebar-fixed page-header-fixed">
 		<div id="header" class="header navbar-inverse">
 			<div class="navbar-header">
-				<a href="dashboard.php" class="navbar-brand"><img src="assets/img/logo_picture.png" height="100%" alt="<?php echo $globals['platform_name']; ?> Logo"> &nbsp;&nbsp; <?php = $globals['platform_name_styled']; ?></a>
+				<a href="dashboard.php" class="navbar-brand"><img src="assets/img/logo_picture.png" height="100%" alt="<?php echo $globals['platform_name']; ?> Logo"> &nbsp;&nbsp; <?php echo $globals['platform_name_styled']; ?></a>
 				<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
