@@ -1906,18 +1906,15 @@ if( isset( $platform_text[1] ) ) {
 									<div class="col-xl-12">
 										<div class="form-group">
 											<label class="bmd-label-floating"><strong>Name</strong></label>
-											<input type="text" name="name" class="form-control" required/>
-											<small>Example: Awesome Cluster</small>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-xl-12">
-										<div class="form-group">
-											<label class="bmd-label-floating"><strong>Cluster Type</strong></label>
-											<select name="type" class="default-select2 form-control">
-												<option value="byos" selected>Bring Your Own Servers</option>
-												<option value="digitalocean" disabled>DigitalOcean Smart Cluster - Coming Soon</option>
+											<select name="project_id" class="default-select2 form-control">
+												<option value="0" selected disabled>Select a project to join</option>
+												<?php 
+													foreach( $projects as $project ) {
+														if( $project['status'] == 'active' ) {
+															echo '<option value="'.$project['id'].'">'.$project['name'].'</option>';
+														}
+													}
+												?>
 											</select>
 										</div>
 									</div>
@@ -1926,7 +1923,7 @@ if( isset( $platform_text[1] ) ) {
 				         	<div class="modal-footer">
 				         		<div class="btn-group">
 									<button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Cancel</button>
-									<button type="submit" class="btn btn-xs btn-green">Add Cluster</button>
+									<button type="submit" class="btn btn-xs btn-green">Join Project</button>
 								</div>
 							</div>
 				      	</div>

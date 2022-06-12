@@ -182,12 +182,14 @@ function get_projects() {
 		$query = $conn->query( "
 			SELECT * 
 			FROM `projects` 
+			ORDER BY `name`
 		" );
 	} else {
 		$query = $conn->query( "
 			SELECT * 
 			FROM `projects` 
 			WHERE `user_id` = '".$_SESSION['account']['id']."' 
+			ORDER BY `name` 
 		" );
 	}
 
