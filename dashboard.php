@@ -71,7 +71,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 	<div id="page-container" class="page-container fade page-sidebar-fixed page-header-fixed">
 		<div id="header" class="header navbar-inverse">
 			<div class="navbar-header">
-				<a href="dashboard.php" class="navbar-brand"><img src="assets/img/logo_picture.svg" height="100%" alt="<?php echo $globals['platform_name']; ?> Logo"> &nbsp;&nbsp; <b><font color="#d94227">Loyalty</font></b>Dashboard</a>
+				<a href="dashboard.php" class="navbar-brand"><img src="assets/img/logo_picture.png" height="100%" alt="<?php echo $globals['platform_name']; ?> Logo"> &nbsp;&nbsp; <b><font color="#f09230">Loyalty</font></b>Dashboard</a>
 				<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
