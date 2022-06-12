@@ -206,10 +206,10 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 							<span>Projects</span> 
 						</a>
 					</li>
-					<li <?php if( get( 'c' ) == 'customers' || get( 'c' ) == 'customer' || get( 'c' ) == 'customer_edit' ) { echo'class="active"'; } ?>>
+					<li <?php if( get( 'c' ) == 'users' || get( 'c' ) == 'user' || get( 'c' ) == 'user_edit' ) { echo'class="active"'; } ?>>
 						<a href="dashboard.php?c=customers">
 							<i class="fa fa-users"></i>
-							<span>Customers</span> 
+							<span>Users</span> 
 						</a>
 					</li>
 					<li>
