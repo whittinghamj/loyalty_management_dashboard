@@ -2084,7 +2084,7 @@ if( isset( $platform_text[1] ) ) {
 			</div>
 		<?php } ?>
 
-		<?php function platform_settings() { ?>
+		<?php function settings() { ?>
 			<?php global $conn, $globals, $account_details, $geoip, $geoisp; ?>
 
 			<div id="content" class="content">
