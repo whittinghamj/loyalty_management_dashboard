@@ -16,6 +16,17 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 		$account_details = $_SESSION['account_details'];
 	}
 }
+
+// build platform logo text
+$platform_text = explode( $globals['platform_name'] );
+if( isset( $platform_text[1] ) ) {
+	$name_1 = $platform_text[0]
+	unset( $platform_text[0] );
+	$name_rest = implode( ' ', $platform_text );
+	$globals['platform_name_styled'] = '<b><font color="#f09230">'.$name_1].'</font> '.$name_rest.'</b>'
+} else {
+	$globals['platform_name_styled'] = '<b><font color="#f09230">'.$globals['platform_name'].'</font></b>';
+}
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +82,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 	<div id="page-container" class="page-container fade page-sidebar-fixed page-header-fixed">
 		<div id="header" class="header navbar-inverse">
 			<div class="navbar-header">
-				<a href="dashboard.php" class="navbar-brand"><img src="assets/img/logo_picture.png" height="100%" alt="<?php echo $globals['platform_name']; ?> Logo"> &nbsp;&nbsp; <b><font color="#f09230">Loyalty</font></b>Dashboard</a>
+				<a href="dashboard.php" class="navbar-brand"><img src="assets/img/logo_picture.png" height="100%" alt="<?php echo $globals['platform_name']; ?> Logo"> &nbsp;&nbsp; <?php = $globals['platform_name_styled']; ?></a>
 				<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
