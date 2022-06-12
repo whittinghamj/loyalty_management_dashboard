@@ -1778,7 +1778,7 @@ if( isset( $platform_text[1] ) ) {
 											<tr>
 												<th class="text-nowrap"><strong>Project</strong></th>
 												<th class="text-nowrap"><strong>URL</strong></th>
-												<th class="text-nowrap" width="50px"><strong>Membership</strong></th>
+												<th class="text-nowrap" width="100px"><strong>Membership</strong></th>
 												<th class="text-nowrap" width="1px"><strong>Status</strong></th>
 												<th class="text-nowrap" data-orderable="false" width="1px"><strong>Actions</strong></th>
 											</tr>
