@@ -1812,9 +1812,9 @@ if( isset( $platform_text[1] ) ) {
 																<div class="dropdown-menu dropdown-menu-right" role="menu">
 																	<a href="?c=project&id='.$project['id'].'" class="dropdown-item">Manage</a>
 																	
-																	'.( $project['user_id'] == $account_details['id'] ? '<a href="?c=project_edit&id='.$project['id'].'" class="dropdown-item">Edit</a>' : ''.'
+																	'.( $project['user_id'] == $account_details['id'] ? '<a href="?c=project_edit&id='.$project['id'].'" class="dropdown-item">Edit</a>' : '' ).'
 
-																	<a href="actions.php?a=cluster_delete&id='.$cluster['id'].'" class="dropdown-item" onclick="return confirm(\'This will delete all proxies contained in this cluster. Are you sure?\')">Delete</a>
+																	<a href="actions.php?a=cluster_delete&id='.$project['id'].'" class="dropdown-item" onclick="return confirm(\'This will delete all proxies contained in this cluster. Are you sure?\')">Delete</a>
 																</div>
 															</td>
 														</tr>
