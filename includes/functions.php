@@ -178,20 +178,11 @@ function search_multi_array( $dataArray, $search_value, $key_to_search ) {
 function get_projects() {
 	global $conn, $account_details, $globals, $whmcs;
 
-	if( $account_details['platform_admin'] == 'yes' ) {
-		$query = $conn->query( "
-			SELECT * 
-			FROM `projects` 
-			ORDER BY `name`
-		" );
-	} else {
-		$query = $conn->query( "
-			SELECT * 
-			FROM `projects` 
-			WHERE `user_id` = '".$_SESSION['account']['id']."' 
-			ORDER BY `name` 
-		" );
-	}
+	$query = $conn->query( "
+		SELECT * 
+		FROM `projects` 
+		ORDER BY `name`
+	" );
 
 	$data		   = $query->fetchAll( PDO::FETCH_ASSOC );
 
