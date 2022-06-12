@@ -1762,7 +1762,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 																		'.$dns_record['ttl'].'
 																	</td>
 																	<td>
-																		'.( $dns_record['proxied'] == 'no' ? '<img src="assets/img/logo_no_text.svg" style="filter: grayscale(100%); opacity: 0.4;" height="25px" alt="<?php echo $globals['platform_name']; ?> Logo">' : '<img src="assets/img/logo_no_text.svg" height="25px" alt="<?php echo $globals['platform_name']; ?> Logo">').'
+																		'.( $dns_record['proxied'] == 'no' ? '<img src="assets/img/logo_no_text.svg" style="filter: grayscale(100%); opacity: 0.4;" height="25px" alt="'.$globals['platform_name'].' Logo">' : '<img src="assets/img/logo_no_text.svg" height="25px" alt="<?php echo $globals['platform_name']; ?> Logo">').'
 																	</td>
 																	<td>
 																		<button type="button" class="btn btn-xs btn-primary dropdown-toggle tutorial_dns_actions" data-toggle="dropdown">Actions<b class="caret"></b></button>
