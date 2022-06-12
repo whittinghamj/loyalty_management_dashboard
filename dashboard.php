@@ -3114,7 +3114,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 		</script>
 	<?php } ?>
 
-	<?php if( $account_details['accept_terms'] == 'no' ){ ?>
+	<?php if( get( 'c' ) != 'staging' && $account_details['accept_terms'] == 'no' ){ ?>
 		<script>
 		    $( window).on( 'load',function() {
                 $( '#modal-terms' ).modal( { 
