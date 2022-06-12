@@ -18,124 +18,9 @@ switch( $a ) {
         accept_terms();
         break;
 
-    // blocked_network_add
-	case "blocked_network_add":
-		blocked_network_add();
-		break;
-
-    // blocked_network_delete
-	case "blocked_network_delete":
-		blocked_network_delete();
-		break;
-
-	// cluster_add
-	case "cluster_add":
-		cluster_add();
-		break;
-
-	// cluster_edit
-	case "cluster_edit":
-		cluster_edit();
-		break;
-
-	// cluster_delete
-	case "cluster_delete":
-		cluster_delete();
-		break;
-
-	// cluster_state
-	case "cluster_state":
-		cluster_state();
-		break;
-
-	// controller_add
-	case "controller_add":
-		controller_add();
-		break;
-
-	// controller_edit
-	case "controller_edit":
-		controller_edit();
-		break;
-
-	// controller_delete
-	case "controller_delete":
-		controller_delete();
-		break;
-
-	// controller_rebuild
-	case "controller_rebuild":
-		controller_rebuild();
-		break;
-
-	// domain_name_add
-	case "domain_name_add":
-		domain_name_add();
-		break;
-
-	// domain_name_edit
-	case "domain_name_edit":
-		domain_name_edit();
-		break;
-
-	// domain_name_record_add
-	case "domain_name_record_add":
-		domain_name_record_add();
-		break;
-
-	// domain_name_record_edit
-	case "domain_name_record_edit":
-		domain_name_record_edit();
-		break;
-
-	// domain_name_record_delete
-	case "domain_name_record_delete":
-		domain_name_record_delete();
-		break;
-
-	// domain_name_delete
-	case "domain_name_delete":
-		domain_name_delete();
-		break;
-
-	// domain_name_resync_dns_records
-	case "domain_name_resync_dns_records":
-		domain_name_resync_dns_records();
-		break;
-
-	// proxy_add
-	case "proxy_add":
-		proxy_add();
-		break;
-
-	// proxy_delete
-	case "proxy_delete":
-		proxy_delete();
-		break;
-
-	// proxy_rebuild
-	case "proxy_rebuild":
-		proxy_rebuild();
-		break;
-
-	// proxy_rebuild_all
-	case "proxy_rebuild_all":
-		proxy_rebuild_all();
-		break;
-
-	// server_edit
-	case "server_edit":
-		server_edit();
-		break;
-
-	// server_reboot
-	case "server_reboot":
-		server_reboot();
-		break;
-
-	// vpn_wizard
-	case "vpn_wizard":
-		vpn_wizard();
+	// settings_edit
+	case "settings_edit":
+		settings_edit();
 		break;
 
 	// whmcs_support
@@ -164,12 +49,41 @@ function accept_terms() {
 	$update = $conn->exec( "UPDATE `users` SET `accept_terms_ip` = '".$globals['client_ip']."' WHERE `id` = '".$_SESSION['account']['id']."' " );
 
 	$_SESSION['account_details']['accept_terms'] == 'yes';
-	
+
 	// set status message
 	status_message( "success", "Terms &amp; Conditions have been accepted." );
 
 	// redirect to dashboard.php
 	go( 'dashboard.php' );
+}
+
+function settings_edit() {
+	global $conn, $globals, $account_details;
+
+	// map fields
+	$platform_name 						= post( 'platform_name' );
+	$url 								= post( 'url' );
+	$smtp_username 						= post( 'iptv_main_server_ip_address' );
+	$smtp_password 						= post( 'iptv_main_server_port' );
+	$smtp_domain 						= post( 'notes' );
+	$smtp_name 							= post( 'enable_stalker' );
+	$dev 								= post( 'dev' );
+
+	// save data
+	$update = $conn->exec( "UPDATE `system_settings` SET `platform_name` = '".$platform_name."' WHERE `config_name` = 'platform_name' " );
+	$update = $conn->exec( "UPDATE `system_settings` SET `url` = '".$url."' WHERE `config_name` = 'platform_name' " );
+	$update = $conn->exec( "UPDATE `system_settings` SET `smtp_username` = '".$smtp_username."' WHERE `config_name` = 'platform_name' " );
+	$update = $conn->exec( "UPDATE `system_settings` SET `smtp_password` = '".$smtp_password."' WHERE `config_name` = 'platform_name' " );
+	$update = $conn->exec( "UPDATE `system_settings` SET `smtp_domain` = '".$smtp_domain."' WHERE `config_name` = 'platform_name' " );
+	$update = $conn->exec( "UPDATE `system_settings` SET `smtp_name` = '".$smtp_name."' WHERE `config_name` = 'platform_name' " );
+	$update = $conn->exec( "UPDATE `system_settings` SET `dev` = '".$dev."' WHERE `config_name` = 'platform_name' " );
+	
+
+	// set status message
+	status_message( "success", "Settings has been updated." );
+
+	// redirect to dashboard.php
+	go( 'dashboard.php?c=settings' );
 }
 
 function blocked_network_add() {

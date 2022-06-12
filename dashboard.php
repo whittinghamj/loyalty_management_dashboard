@@ -2128,7 +2128,7 @@ if( isset( $platform_text[1] ) ) {
 						</div>
 					</div>
 
-					<form class="form" method="post" action="actions.php?a=platform_settings_edit">
+					<form class="form" method="post" action="actions.php?a=settings_edit">
 						<input type="hidden" name="id" value="<?php echo $server['id']; ?>">
 
 						<div class="row">
