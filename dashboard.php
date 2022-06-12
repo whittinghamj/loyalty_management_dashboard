@@ -230,7 +230,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 						</li>
 						<li <?php if( get( 'c' ) == 'settings' ) { echo'class="active"'; } ?>>
 							<a href="dashboard.php?c=settings">
-								<i class="fa fa-gears"></i>
+								<i class="fa fa-cogs"></i>
 								<span>Users</span> 
 							</a>
 						</li>
