@@ -11,7 +11,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 }
 
 echo '<pre>';
-echo $_SESSION;
+print_r($_SESSION);
 die();
 
 $a = get( 'a' );
