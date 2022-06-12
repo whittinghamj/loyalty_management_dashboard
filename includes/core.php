@@ -69,11 +69,11 @@ try{
 }
 
 // site db vars
-$query = $conn->query( "SELECT `name`,`value` FROM `system_settings` " );
+$query = $conn->query( "SELECT * FROM `system_settings` " );
 $globals_temp = $query->fetchAll( PDO::FETCH_ASSOC );
 
 foreach( $globals_temp as $bits ) {
-	$globals[$bits['name']] = $bits['value'];
+	$globals[$bits['config_name']] = $bits['config_value'];
 }
 
 // get clients ip address
