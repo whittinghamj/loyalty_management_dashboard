@@ -34,6 +34,7 @@ function core_is_cli() {
 
     return 'web';
 }
+
 // session start
 if( core_is_cli() != 'cli' ) {
     // server should keep session data for AT LEAST 1 day
@@ -81,6 +82,13 @@ $globals['domain']              = 'loyalty.unitedfarmers.finance';
 $globals['platform_name']		= 'UFX Loyalty Dashboard';
 $globals['platform_version']	= '1.0.0';
 $globals['copyright']			= 'Written by OTTO1372.';
+
+// get clients ip address
+if( isset( $_SERVER["HTTP_CF_CONNECTING_IP"] ) ) {
+    $globals['client_ip'] = $_SERVER["HTTP_CF_CONNECTING_IP"];
+} else {
+    $globals['client_ip'] = $_SERVER['REMOTE_ADDR'];
+}
 
 // site db vars
 /*

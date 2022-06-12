@@ -158,20 +158,10 @@ function home() {
 function accept_terms() {
 	global $conn, $globals, $account_details;
 
-	echo '<pre>';
-	print_r($conn);
-	print_r($globals);
-	print_r($account_details);
-	print_r($_SESSION);
-
-	echo "UPDATE `users` SET `accept_terms` = 'yes' WHERE `id` = '".$_SESSION['account']['id']."' ";
-	
-	die();
-
 	// save data
 	$update = $conn->exec( "UPDATE `users` SET `accept_terms` = 'yes' WHERE `id` = '".$_SESSION['account']['id']."' " );
 	$update = $conn->exec( "UPDATE `users` SET `accept_terms_timestamp` = '".time()."' WHERE `id` = '".$_SESSION['account']['id']."' " );
-	$update = $conn->exec( "UPDATE `users` SET `accept_terms_ip` = '".$_SERVER['REMOTE_ADDR']."' WHERE `id` = '".$_SESSION['account']['id']."' " );
+	$update = $conn->exec( "UPDATE `users` SET `accept_terms_ip` = '".$globals['client_ip']."' WHERE `id` = '".$_SESSION['account']['id']."' " );
 
 	// set status message
 	status_message( "success", "Terms &amp; Conditions have been accepted." );

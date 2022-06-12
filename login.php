@@ -23,16 +23,9 @@ if( isset( $user['id'] ) ) {
 		$_SESSION['logged_in']						= true;
 		$_SESSION['account']['id']					= $user['id'];
 
-		// get client IP
-		if (isset ($_SERVER["HTTP_CF_CONNECTING_IP"] ) ) {
-			$client_ip = $_SERVER['REMOTE_ADDR'] = $_SERVER["HTTP_CF_CONNECTING_IP"];
-		} else {
-			$client_ip = $_SERVER['REMOTE_ADDR'];
-		}
-
 		// save this login
 		$update = $conn->exec( "UPDATE `users` SET `last_login_timestamp` = '".time()."' WHERE `id` = '".$_SESSION['account']['id']."' " );
-		$update = $conn->exec( "UPDATE `users` SET `last_login_ip` = '".$client_ip."' WHERE `id` = '".$_SESSION['account']['id']."' " );
+		$update = $conn->exec( "UPDATE `users` SET `last_login_ip` = '".$globals['client_ip']."' WHERE `id` = '".$_SESSION['account']['id']."' " );
 		
 		// redirect
 		go( "dashboard.php" );
