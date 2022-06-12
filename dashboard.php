@@ -2114,14 +2114,7 @@ if( isset( $platform_text[1] ) ) {
 							<div class="panel">
 								<div class="panel-body">
 									<div class="row">
-										<div class="col-xl-10">
-											<div id="status_message"></div>
-										</div>
-										<!--
-											<div class="col-xl-2 text-right">
-												<a href="?c=cluster&id=<?php echo $cluster['id'];?>" type="button" class="btn btn-xs btn-primary">Manage Cluster</a>
-											</div>
-										-->
+										<div id="status_message"></div>
 									</div>
 								</div>
 							</div>
