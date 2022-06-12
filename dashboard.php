@@ -2109,24 +2109,7 @@ if( isset( $platform_text[1] ) ) {
 						</div>
 					</div>
 				<?php }else { ?>
-					<div class="row">
-						<div class="col-xl-12">
-							<div class="panel">
-								<div class="panel-body">
-									<div class="row">
-										<div class="col-xl-12">
-											<div id="status_message"></div>
-										</div>
-										<!--
-											<div class="col-xl-2 text-right">
-												<a href="?c=cluster&id=<?php echo $cluster['id'];?>" type="button" class="btn btn-xs btn-primary">Manage Cluster</a>
-											</div>
-										-->
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<div id="status_message"></div>
 
 					<form class="form" method="post" action="actions.php?a=settings_edit">
 						<input type="hidden" name="id" value="<?php echo $server['id']; ?>">
