@@ -1906,7 +1906,7 @@ if( isset( $platform_text[1] ) ) {
 			</div>
 
 			<form class="form" method="post" action="actions.php?a=project_join">
-				<div class="modal fade" id="project_join_modal" tabindex="-1" role="dialog" aria-labelledby="cluster_add_modal" aria-hidden="true">
+				<div class="modal fade" id="project_join_modal" tabindex="-1" role="dialog" aria-labelledby="project_join_modal" aria-hidden="true">
 				   	<div class="modal-dialog modal-notice">
 				      	<div class="modal-content">
 				         	<div class="modal-header">
@@ -1938,6 +1938,49 @@ if( isset( $platform_text[1] ) ) {
 				         		<div class="btn-group">
 									<button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Cancel</button>
 									<button type="submit" class="btn btn-xs btn-green">Join Project</button>
+								</div>
+							</div>
+				      	</div>
+				   	</div>
+				</div>
+			</form>
+
+			<form class="form" method="post" action="actions.php?a=project_add">
+				<div class="modal fade" id="project_add_modal" tabindex="-1" role="dialog" aria-labelledby="project_add_modal" aria-hidden="true">
+				   	<div class="modal-dialog modal-notice">
+				      	<div class="modal-content">
+				         	<div class="modal-header">
+				            	<h5 class="modal-title" id="myModalLabel">Add Project</h5>
+				            	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+				            		x
+				            	</button>
+				         	</div>
+				         	<div class="modal-body">
+			               		<div class="row">
+									<div class="col-xl-12">
+										<div class="form-group">
+											<label class="bmd-label-floating"><strong>Name</strong></label>
+											<input type="text" name="name" class="form-control" required/>
+											<small>Example: Awesome Cluster</small>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xl-12">
+										<div class="form-group">
+											<label class="bmd-label-floating"><strong>Cluster Type</strong></label>
+											<select name="type" class="default-select2 form-control">
+												<option value="byos" selected>Bring Your Own Servers</option>
+												<option value="digitalocean" disabled>DigitalOcean Smart Cluster - Coming Soon</option>
+											</select>
+										</div>
+									</div>
+								</div>
+				         	</div>
+				         	<div class="modal-footer">
+				         		<div class="btn-group">
+									<button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Cancel</button>
+									<button type="submit" class="btn btn-xs btn-green">Add Cluster</button>
 								</div>
 							</div>
 				      	</div>
