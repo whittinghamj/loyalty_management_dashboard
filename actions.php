@@ -8,34 +8,6 @@ include( dirname(__FILE__).'/includes/functions.php' );
 if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 	// redirect to index.php
 	go( 'index.php' );
-} else {
-	if( !isset( $_SESSION['account_details'] ) ) {
-		$account_details = account_details( $_SESSION['account']['id'] );
-		$_SESSION['account_details'] = $account_details;
-	} else {
-		$account_details = $_SESSION['account_details'];
-	}
-
-	// calculate allowed vs installed proxies
-	// get installed proxies
-	$account_details['installed_proxies'] 		= total_servers_account_wide();
-
-	// count active allowed proxies
-	$account_details['allowed_proxies'] = 0;
-	foreach( $account_details['products'] as $product ) {
-		if( $product['pid'] == '82' && $product['status'] == 'Active' ) {
-			$account_details['allowed_proxies']++;
-		}
-	}
-
-	if( $account_details['installed_proxies'] >= $account_details['allowed_proxies'] ) {
-		$account_details['allow_more_proxies'] = false;
-	} else {
-		$account_details['allow_more_proxies'] = true;
-	}
-
-	// get local user data
-	$account_details['local_data'] = account_details_local( $_SESSION['account']['id'] );
 }
 
 $a = get( 'a' );
