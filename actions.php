@@ -10,6 +10,10 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 	go( 'index.php' );
 }
 
+echo '<pre>';
+echo $_SESSION;
+die();
+
 $a = get( 'a' );
 
 switch( $a ) {
