@@ -1793,7 +1793,7 @@ if( isset( $platform_text[1] ) ) {
 														if( $user_token['project_id'] == $project['id'] ) {
 															$project['membership_styled'] = '<button class="btn btn-xs btn-success btn-block">Active</button>';
 														} else {
-															$project['membership_styled'] = '<button class="btn btn-xs btn-danger btn-block">In-active</button>';
+															$project['membership_styled'] = '<button class="btn btn-xs btn-danger btn-block">Inactive</button>';
 														}
 													}
 
