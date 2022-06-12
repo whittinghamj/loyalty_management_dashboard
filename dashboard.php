@@ -2018,7 +2018,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 				<div class="row">
 					<div class="col-xl-3 col-md-6">
 						<div class="widget widget-stats bg-blue tutorial_total_projects">
-							<div class="stats-icon"><i class="fa fa-rectangle-vertical-history"></i></div>
+							<div class="stats-icon"><i class="fa fa-folder-open"></i></div>
 							<div class="stats-info">
 								<h4>Projects</h4>
 								<p><?php echo total_projects(); ?></p>	
