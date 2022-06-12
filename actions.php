@@ -70,13 +70,13 @@ function settings_edit() {
 	$dev 								= post( 'dev' );
 
 	// save data
-	$update = $conn->exec( "UPDATE `system_settings` SET `platform_name` = '".$platform_name."' WHERE `config_name` = 'platform_name' " );
-	$update = $conn->exec( "UPDATE `system_settings` SET `url` = '".$url."' WHERE `config_name` = 'platform_name' " );
-	$update = $conn->exec( "UPDATE `system_settings` SET `smtp_username` = '".$smtp_username."' WHERE `config_name` = 'platform_name' " );
-	$update = $conn->exec( "UPDATE `system_settings` SET `smtp_password` = '".$smtp_password."' WHERE `config_name` = 'platform_name' " );
-	$update = $conn->exec( "UPDATE `system_settings` SET `smtp_domain` = '".$smtp_domain."' WHERE `config_name` = 'platform_name' " );
-	$update = $conn->exec( "UPDATE `system_settings` SET `smtp_name` = '".$smtp_name."' WHERE `config_name` = 'platform_name' " );
-	$update = $conn->exec( "UPDATE `system_settings` SET `dev` = '".$dev."' WHERE `config_name` = 'platform_name' " );
+	$update = $conn->exec( "UPDATE `system_settings` SET `config_value` = '".$platform_name."' WHERE `config_name` = 'platform_name' " );
+	$update = $conn->exec( "UPDATE `system_settings` SET `config_value` = '".$url."' WHERE `config_name` = 'url' " );
+	$update = $conn->exec( "UPDATE `system_settings` SET `config_value` = '".$smtp_username."' WHERE `config_name` = 'smtp_username' " );
+	$update = $conn->exec( "UPDATE `system_settings` SET `config_value` = '".$smtp_password."' WHERE `config_name` = 'smtp_password' " );
+	$update = $conn->exec( "UPDATE `system_settings` SET `config_value` = '".$smtp_domain."' WHERE `config_name` = 'smtp_domain' " );
+	$update = $conn->exec( "UPDATE `system_settings` SET `config_value` = '".$smtp_name."' WHERE `config_name` = 'smtp_name' " );
+	$update = $conn->exec( "UPDATE `system_settings` SET `config_value` = '".$dev."' WHERE `config_name` = 'dev' " );
 	
 
 	// set status message
