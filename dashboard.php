@@ -201,7 +201,7 @@ if( isset( $platform_text[1] ) ) {
 					</ul>
 				-->
 
-				<?php if( $account_details['is_platform_admin'] == 'yes' ) { ?>
+				<?php if( $account_details['platform_admin'] == 'yes' ) { ?>
 					<ul class="nav"><li class="nav-header">Platform Admin</li>
 						<li <?php if( get( 'c' ) == 'users' || get( 'c' ) == 'user' || get( 'c' ) == 'user_edit' ) { echo'class="active"'; } ?>>
 							<a href="dashboard.php?c=users">
@@ -1678,7 +1678,7 @@ if( isset( $platform_text[1] ) ) {
 							</div>
 						</div>
 					</div>
-					<?php if( $account_details['is_platform_admin'] == 'yes' ) { ?>
+					<?php if( $account_details['platform_admin'] == 'yes' ) { ?>
 						<div class="col-xl-3 col-md-6">
 							<div class="widget widget-stats bg-success tutorial_total_controllers">
 								<!-- <div class="stats-icon"><i class="fa fa-btc"></i></div> -->
@@ -1741,7 +1741,7 @@ if( isset( $platform_text[1] ) ) {
 		<?php function projects() { ?>
 			<?php global $conn, $globals, $account_details, $geoip, $geoisp; ?>
 
-			<?php $clusters = get_projects(); ?>
+			<?php $projects = get_projects(); ?>
 
 			<div id="content" class="content">
 				<ol class="breadcrumb float-xl-right">
@@ -1777,6 +1777,7 @@ if( isset( $platform_text[1] ) ) {
 											<tr>
 												<th class="text-nowrap"><strong>Project</strong></th>
 												<th class="text-nowrap"><strong>URL</strong></th>
+												<th class="text-nowrap" width="1px"><strong>Status</strong></th>
 												<th class="text-nowrap" data-orderable="false" width="1px"><strong>Actions</strong></th>
 											</tr>
 										</thead>
@@ -1784,6 +1785,15 @@ if( isset( $platform_text[1] ) ) {
 											<?php
 												// build table
 												foreach( $projects as $project ) {
+
+													// project status
+													if( $project['status'] == 'active' ) { 
+														$project['status_styled'] = '<button class="btn btn-xs btn-success btn-block">Active</button>';
+													} elseif( $project['status'] == 'suspended' ) { 
+														$project['status_styled'] = '<button class="btn btn-xs btn-warning btn-block">Suspended</button>';
+													} elseif( $project['status'] == 'retired' ) { 
+														$project['status_styled'] = '<button class="btn btn-xs btn-danger btn-block">Retired</button>';
+													}
 
 													// output
 													echo '
@@ -1793,6 +1803,9 @@ if( isset( $platform_text[1] ) ) {
 															</td>
 															<td>
 																'.$project['url'].' 
+															</td>
+															<td>
+																'.$project['status_styled'].' 
 															</td>
 															<td>
 																<button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">Actions<b class="caret"></b></button>
@@ -1933,7 +1946,7 @@ if( isset( $platform_text[1] ) ) {
 
 				<h1 class="page-header">Settings</h1>
 
-				<?php if( $account_details['is_platform_admin'] == 'no' ) { ?>
+				<?php if( $account_details['platform_admin'] == 'no' ) { ?>
 					<div class="row">
 						<div class="col-xl-12">
 							<div class="panel panel-danger">
