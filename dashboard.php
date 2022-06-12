@@ -2198,9 +2198,11 @@ if( isset( $platform_text[1] ) ) {
 						</div>
 
 						<div class="row">
-							<div class="panel-footer">
-								<a href="?c=clusters" type="button" class="btn btn-xs btn-primary">Back</a>
-								<button type="submit" class="btn btn-xs btn-green pull-right tutorial_settings_save_1">Save Changes</button>
+							<div class="col-xl-12 col-md-12 col-xs-12">
+								<div class="panel-footer">
+									<a href="?c=clusters" type="button" class="btn btn-xs btn-primary">Back</a>
+									<button type="submit" class="btn btn-xs btn-green pull-right tutorial_settings_save_1">Save Changes</button>
+								</div>
 							</div>
 						</div>
 					</form>
