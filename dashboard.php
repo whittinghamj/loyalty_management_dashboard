@@ -25,7 +25,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 	<title><?php echo $globals['platform_name']; ?></title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="Advanced next generation content delivery, performance and security platform." name="description" />
-	<meta content="CloudShield.io" name="author" />
+	<meta content="<?php echo $globals['platform_name']; ?>.io" name="author" />
 
     <link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/apple-icon-60x60.png">
@@ -59,8 +59,8 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 	<!-- apple switch -->
 	<link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
 
-	<!-- cloudshield custom css -->
-	<link href="assets/css/cloudshield.css" rel="stylesheet" />
+	<!-- <?php echo $globals['platform_name']; ?> custom css -->
+	<link href="assets/css/<?php echo $globals['platform_name']; ?>.css" rel="stylesheet" />
 </head>
 
 <body class="boxed-layout">
@@ -71,7 +71,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 	<div id="page-container" class="page-container fade page-sidebar-fixed page-header-fixed">
 		<div id="header" class="header navbar-inverse">
 			<div class="navbar-header">
-				<a href="dashboard.php" class="navbar-brand"><img src="assets/img/logo_no_text.svg" height="100%" alt="CloudShield Logo"> &nbsp;&nbsp; <b><font color="#d94227">Cloud</font></b>Shield</a>
+				<a href="dashboard.php" class="navbar-brand"><img src="assets/img/logo_no_text.svg" height="100%" alt="<?php echo $globals['platform_name']; ?> Logo"> &nbsp;&nbsp; <b><font color="#d94227">Cloud</font></b>Shield</a>
 				<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -572,7 +572,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 															                  		<div class="col-xl-12">
 															                     		<strong>2. Full Reinstall &amp; Update</strong>
 															                     		<p class="description">
-															                     			This option is only to be used if you have reinstalled your operating system and need to perform a full installation of CloudShield. Estimated time to install is between 10-15 minutes.
+															                     			This option is only to be used if you have reinstalled your operating system and need to perform a full installation of <?php echo $globals['platform_name']; ?>. Estimated time to install is between 10-15 minutes.
 															                     		</p>
 															                  		</div>
 															               		</div>
@@ -791,7 +791,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 																                  		<div class="col-xl-12">
 																                     		<strong>2. Full Reinstall &amp; Update</strong>
 																                     		<p class="description">
-																                     			This option is only to be used if you have reinstalled your operating system and need to perform a full installation of CloudShield. Estimated time to install is between 10-15 minutes.
+																                     			This option is only to be used if you have reinstalled your operating system and need to perform a full installation of <?php echo $globals['platform_name']; ?>. Estimated time to install is between 10-15 minutes.
 																                     		</p>
 																                  		</div>
 																               		</div>
@@ -1167,9 +1167,9 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 			         	<div class="modal-body">
 		               		<div class="row">
 		               			<div class="col-md-6 col-sm-12">
-		               				Welcome to CloudShield. <br>
+		               				Welcome to <?php echo $globals['platform_name']; ?>. <br>
 		               				<br>
-									CloudShield is a next generation content filtering, protection and performance platform, making it impossible for anyone, with malicious intent or otherwise, to make direct contact with your origin server(s), or to locate, identify or damage them in any way. <br>
+									<?php echo $globals['platform_name']; ?> is a next generation content filtering, protection and performance platform, making it impossible for anyone, with malicious intent or otherwise, to make direct contact with your origin server(s), or to locate, identify or damage them in any way. <br>
 									<br>
 									Based on the principle of using proxy servers as a shield between your customers (or anyone else) and your origin server(s), and using the 'cluster' concept, you have one or more controller servers that manage your cluster of secure proxy servers. When anyone enters your website address the controller first checks that the connection is an authentic one and not a direct security risk, and then selects a suitable proxy server to direct the customer to. <br>
 									<br>
@@ -1478,7 +1478,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 														<option value="yes" <?php if( $cluster['enable_ssl'] == 'yes') { echo 'selected'; } ?> >Enable Inbound Encryption</option>
 														<option value="no" <?php if( $cluster['enable_ssl'] == 'no') { echo 'selected'; } ?> >Disable Inbound Encryption</option>
 													</select> <br>
-													<small>Encrypts traffic between the browser and CloudShield.</small>
+													<small>Encrypts traffic between the browser and <?php echo $globals['platform_name']; ?>.</small>
 	                                            </div>
 	                                        </div>
 	                                        <div class="col-xl-12 col-sm-12">
@@ -1488,7 +1488,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 														<option value="yes" <?php if( $cluster['enable_ssl_out'] == 'yes') { echo 'selected'; } ?> >Enable Outbound Encryption</option>
 														<option value="no" <?php if( $cluster['enable_ssl_out'] == 'no') { echo 'selected'; } ?> >Disable Outbound Encryption</option>
 													</select> <br>
-													<small>Encrypts traffic between CloudShield and your origin server.</small>
+													<small>Encrypts traffic between <?php echo $globals['platform_name']; ?> and your origin server.</small>
 	                                            </div>
 	                                        </div>
 										</div>
@@ -1517,7 +1517,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 														<option value="yes" <?php if( $cluster['enable_evpn'] == 'yes') { echo 'selected'; } ?> >Enable</option>
 														<option value="no" <?php if( $cluster['enable_evpn'] == 'no') { echo 'selected'; } ?> >Disable</option>
 													</select> <br>
-													<small>Embedded VPN Server that runs on your CloudShield Cluster.</small>
+													<small>Embedded VPN Server that runs on your <?php echo $globals['platform_name']; ?> Cluster.</small>
 	                                            </div>
 	                                        </div>
 										</div>
@@ -1703,17 +1703,17 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 								<div class="panel-body">
 									<?php if( $domain_name['status'] == 'pending' ) { ?>
 										<h4>Change your nameservers for <?php echo $domain_name['domain_name']; ?></h4>
-										Pointing to CloudShield's nameservers is critical for activating your site successfully. Otherwise, CloudShield is unable to manage your DNS and optimize your site. 
+										Pointing to <?php echo $globals['platform_name']; ?>'s nameservers is critical for activating your site successfully. Otherwise, <?php echo $globals['platform_name']; ?> is unable to manage your DNS and optimize your site. 
 										<hr>
 										<h4>1. Log in to your registrar account <?php if( !empty( $domain_name['registrar'] ) ) { echo 'at "'.ucwords( $domain_name['registrar'] ).'"'; } ?></h4>
 										Remove the existing nameserver records or select 'Custom Nameservers' if applicable. <br>
 										<br>
-										<h4>2. Replace with CloudShield's nameservers:</h4>
+										<h4>2. Replace with <?php echo $globals['platform_name']; ?>'s nameservers:</h4>
 										<div class="row">
 											<div class="col-xl-12">
 												<div class="form-group">
 													<label class="bmd-label-floating"><strong>Nameserver 1</strong></label>
-													<input type="text" class="form-control" value="ns1.cloudshield.io" readonly/>
+													<input type="text" class="form-control" value="ns1.<?php echo $globals['platform_name']; ?>.io" readonly/>
 												</div>
 											</div>
 										</div>
@@ -1721,14 +1721,14 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 											<div class="col-xl-12">
 												<div class="form-group">
 													<label class="bmd-label-floating"><strong>Nameserver 2</strong></label>
-													<input type="text" class="form-control" value="ns2.cloudshield.io" readonly/>
+													<input type="text" class="form-control" value="ns2.<?php echo $globals['platform_name']; ?>.io" readonly/>
 												</div>
 											</div>
 										</div>
 										<br>
 										Check to make sure they’re correct, then Save your changes. <br>
 										<br>
-										Registrars typically process nameserver updates within 24 hours. Once this process completes, your domain will be pointing to CloudShield's nameservers, and then this page will display the DNS records for this domain. <br>
+										Registrars typically process nameserver updates within 24 hours. Once this process completes, your domain will be pointing to <?php echo $globals['platform_name']; ?>'s nameservers, and then this page will display the DNS records for this domain. <br>
 									<?php } else { ?>
 										<table id="table_dns_records" class="table table-striped table-bordered table-td-valign-middle">
 											<thead>
@@ -1762,7 +1762,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 																		'.$dns_record['ttl'].'
 																	</td>
 																	<td>
-																		'.( $dns_record['proxied'] == 'no' ? '<img src="assets/img/logo_no_text.svg" style="filter: grayscale(100%); opacity: 0.4;" height="25px" alt="CloudShield Logo">' : '<img src="assets/img/logo_no_text.svg" height="25px" alt="CloudShield Logo">').'
+																		'.( $dns_record['proxied'] == 'no' ? '<img src="assets/img/logo_no_text.svg" style="filter: grayscale(100%); opacity: 0.4;" height="25px" alt="<?php echo $globals['platform_name']; ?> Logo">' : '<img src="assets/img/logo_no_text.svg" height="25px" alt="<?php echo $globals['platform_name']; ?> Logo">').'
 																	</td>
 																	<td>
 																		<button type="button" class="btn btn-xs btn-primary dropdown-toggle tutorial_dns_actions" data-toggle="dropdown">Actions<b class="caret"></b></button>
@@ -2076,7 +2076,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 								</div>
 							</div>
 							<div class="panel-body">
-								Today we are proud to release CloudShield v2 with an all new interface and features.
+								Today we are proud to release <?php echo $globals['platform_name']; ?> v2 with an all new interface and features.
 							</div>
 						</div>
 					</div>
@@ -2243,7 +2243,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 								<h4 class="panel-title">SmartDNS Servers</h4>
 							</div>
 							<div class="panel-body">
-								CloudShield operates multiple SmartDNS servers that are 100% free to use. These are not your average DNS servers though, these are SmartDNS servers with some awesome features. Your ISP tracks, stores and sells data on everything you do online. The websites you visit, duration online and what you search on Google. Never have to worry about this ever again.<br>
+								<?php echo $globals['platform_name']; ?> operates multiple SmartDNS servers that are 100% free to use. These are not your average DNS servers though, these are SmartDNS servers with some awesome features. Your ISP tracks, stores and sells data on everything you do online. The websites you visit, duration online and what you search on Google. Never have to worry about this ever again.<br>
 								<br>
 								<em>"SmartDNS is a technology based on using your DNS (Domain Name Server) to unblock geo-restricted sites and services. It's somewhat similar to how VPN servers route your internet traffic through a remote server to hide your real IP address and physical location."</em> <br>
 								<br>
@@ -2372,10 +2372,10 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 		            	<h5 class="modal-title" id="myModalLabel">Terms &amp; Conditions <small>(scroll to accept)</small></h5>
 		         	</div>
 		         	<div class="modal-body">
-						<h2>Welcome to CloudShield</h2>
-						<p>These terms and conditions outline the rules and regulations for the use of CloudShield's Website.</p> <br /> 
+						<h2>Welcome to <?php echo $globals['platform_name']; ?></h2>
+						<p>These terms and conditions outline the rules and regulations for the use of <?php echo $globals['platform_name']; ?>'s Website.</p> <br /> 
 
-						<p>By accessing this website we assume you accept these terms and conditions in full. Do not continue to use CloudShield's website 
+						<p>By accessing this website we assume you accept these terms and conditions in full. Do not continue to use <?php echo $globals['platform_name']; ?>'s website 
 						if you do not accept all of the terms and conditions stated on this page.</p>
 						<p>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice
 						and any or all Agreements: "Client", "You" and "Your" refers to you, the person accessing this website
@@ -2387,21 +2387,21 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 						of provision of the Company's stated services/products, in accordance with and subject to, prevailing law
 						of . Any use of the above terminology or other words in the singular, plural,
 						capitalisation and/or he/she or they, are taken as interchangeable and therefore as referring to same.</p><h2>Cookies</h2>
-						<p>We employ the use of cookies. By using CloudShield's website you consent to the use of cookies 
-						in accordance with CloudShield's privacy policy.</p><p>Most of the modern day interactive web sites
+						<p>We employ the use of cookies. By using <?php echo $globals['platform_name']; ?>'s website you consent to the use of cookies 
+						in accordance with <?php echo $globals['platform_name']; ?>'s privacy policy.</p><p>Most of the modern day interactive web sites
 						use cookies to enable us to retrieve user details for each visit. Cookies are used in some areas of our site
 						to enable the functionality of this area and ease of use for those people visiting. Some of our 
 						affiliate / advertising partners may also use cookies.</p><h2>License</h2>
-						<p>Unless otherwise stated, CloudShield and/or it's licensors own the intellectual property rights for
-						all material on CloudShield. All intellectual property rights are reserved. You may view and/or print
-						pages from https://www.cloudshield.io for your own personal use subject to restrictions set in these terms and conditions.</p>
+						<p>Unless otherwise stated, <?php echo $globals['platform_name']; ?> and/or it's licensors own the intellectual property rights for
+						all material on <?php echo $globals['platform_name']; ?>. All intellectual property rights are reserved. You may view and/or print
+						pages from https://www.<?php echo $globals['platform_name']; ?>.io for your own personal use subject to restrictions set in these terms and conditions.</p>
 						<p>You must not:</p>
 						<ol>
-						<li>Republish material from https://www.cloudshield.io</li>
-						<li>Sell, rent or sub-license material from https://www.cloudshield.io</li>
-						<li>Reproduce, duplicate or copy material from https://www.cloudshield.io</li>
+						<li>Republish material from https://www.<?php echo $globals['platform_name']; ?>.io</li>
+						<li>Sell, rent or sub-license material from https://www.<?php echo $globals['platform_name']; ?>.io</li>
+						<li>Reproduce, duplicate or copy material from https://www.<?php echo $globals['platform_name']; ?>.io</li>
 						</ol>
-						<p>Redistribute content from CloudShield (unless content is specifically made for redistribution).</p>
+						<p>Redistribute content from <?php echo $globals['platform_name']; ?> (unless content is specifically made for redistribution).</p>
 						<h2>Hyperlinking to our Content</h2>
 						<ol>
 						<li>The following organizations may link to our Web site without prior written approval:
@@ -2439,7 +2439,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 						unfavorably on us or our accredited businesses (for example, trade associations or other organizations
 						representing inherently suspect types of business, such as work-at-home opportunities, shall not be allowed
 						to link); (b)the organization does not have an unsatisfactory record with us; (c) the benefit to us from
-						the visibility associated with the hyperlink outweighs the absence of CloudShield; and (d) where the
+						the visibility associated with the hyperlink outweighs the absence of <?php echo $globals['platform_name']; ?>; and (d) where the
 						link is in the context of general resource information or is otherwise consistent with editorial content
 						in a newsletter or similar product furthering the mission of the organization.</p>
 
@@ -2449,7 +2449,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 						site.</p>
 
 						<p>If you are among the organizations listed in paragraph 2 above and are interested in linking to our website,
-						you must notify us by sending an e-mail to <a href="mailto:info@cloudshield.io" title="send an email to info@cloudshield.io">info@cloudshield.io</a>.
+						you must notify us by sending an e-mail to <a href="mailto:info@<?php echo $globals['platform_name']; ?>.io" title="send an email to info@<?php echo $globals['platform_name']; ?>.io">info@<?php echo $globals['platform_name']; ?>.io</a>.
 						Please include your name, your organization name, contact information (such as a phone number and/or e-mail
 						address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site,
 						and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.</p>
@@ -2462,7 +2462,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 						<li>By use of any other description of our Web site or material being linked to that makes sense within the
 						context and format of content on the linking party's site.</li>
 						</ol>
-						<p>No use of CloudShield's logo or other artwork will be allowed for linking absent a trademark license
+						<p>No use of <?php echo $globals['platform_name']; ?>'s logo or other artwork will be allowed for linking absent a trademark license
 						agreement.</p>
 						<h2>Iframes</h2>
 						<p>Without prior approval and express written permission, you may not create frames around our Web pages or
@@ -2557,7 +2557,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 						},
 						{
 							element: document.querySelector('.tutorial_total_clusters'),
-							intro: "This shows how many Clusters you currently have setup with CloudShield.",
+							intro: "This shows how many Clusters you currently have setup with <?php echo $globals['platform_name']; ?>.",
 							position: 'top'
 						},
 						{
@@ -2572,12 +2572,12 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 						},
 						{
 							element: document.querySelector('.tutorial_total_domains'),
-							intro: "This shows how many Domains you currently have setup with CloudShield.",
+							intro: "This shows how many Domains you currently have setup with <?php echo $globals['platform_name']; ?>.",
 							position: 'top'
 						},
 						{
 							element: document.querySelector('.tutorial_news'),
-							intro: "Get the very latest news and updates about the CloudShield platform.",
+							intro: "Get the very latest news and updates about the <?php echo $globals['platform_name']; ?> platform.",
 							position: 'top'
 						},
 					]
@@ -2635,7 +2635,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 						},
 						{
 							element: document.querySelector('.tutorial_cluster_wizard'),
-							intro: "CloudShield Cluster Design Wizard will help you to build a cluster that meets your needs.",
+							intro: "<?php echo $globals['platform_name']; ?> Cluster Design Wizard will help you to build a cluster that meets your needs.",
 							position: 'top'
 						},
 						{
@@ -2771,12 +2771,12 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 					steps: [
 						{
 							element: document.querySelector('.tutorial_settings_ssl'),
-							intro: "This will encrypt all traffic between the browser and your CloudShield Cluster. this is a great way to secure your content from attackers and those attempting to snoop on the traffic passing between the browser and your Cluster.",
+							intro: "This will encrypt all traffic between the browser and your <?php echo $globals['platform_name']; ?> Cluster. this is a great way to secure your content from attackers and those attempting to snoop on the traffic passing between the browser and your Cluster.",
 							position: 'top'
 						},
 						{
 							element: document.querySelector('.tutorial_settings_ssl_out'),
-							intro: "This will encrypt all traffic between your CloudShield Cluster and your origin server.",
+							intro: "This will encrypt all traffic between your <?php echo $globals['platform_name']; ?> Cluster and your origin server.",
 							position: 'top'
 						},
 						{
@@ -2829,7 +2829,7 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 					steps: [
 						{
 							element: document.querySelector('.tutorial_settings_evpn'),
-							intro: "As part of the CloudShield service there is an Embedded VPN Server that runs on each Proxy server in your cluster. When this option enabled, your customers will be able to establish a dedicated OpenVPN connection directly to the Cluster.",
+							intro: "As part of the <?php echo $globals['platform_name']; ?> service there is an Embedded VPN Server that runs on each Proxy server in your cluster. When this option enabled, your customers will be able to establish a dedicated OpenVPN connection directly to the Cluster.",
 							position: 'top'
 						},
 						{
