@@ -159,9 +159,9 @@ function accept_terms() {
 	global $conn, $globals, $account_details;
 
 	// save data
-	$update = $conn->exec( "UPDATE `users` SET `accept_terms` = 'yes' WHERE `user_id` = '".$_SESSION['account']['id']."' " );
-	$update = $conn->exec( "UPDATE `users` SET `accept_terms_timestamp` = '".time()."' WHERE `user_id` = '".$_SESSION['account']['id']."' " );
-	$update = $conn->exec( "UPDATE `users` SET `accept_terms_ip` = '".$_SERVER['REMOTE_ADDR']."' WHERE `user_id` = '".$_SESSION['account']['id']."' " );
+	$update = $conn->exec( "UPDATE `users` SET `accept_terms` = 'yes' WHERE `id` = '".$_SESSION['account']['id']."' " );
+	$update = $conn->exec( "UPDATE `users` SET `accept_terms_timestamp` = '".time()."' WHERE `id` = '".$_SESSION['account']['id']."' " );
+	$update = $conn->exec( "UPDATE `users` SET `accept_terms_ip` = '".$_SERVER['REMOTE_ADDR']."' WHERE `id` = '".$_SESSION['account']['id']."' " );
 
 	// set status message
 	status_message( "success", "Terms &amp; Conditions have been accepted." );
