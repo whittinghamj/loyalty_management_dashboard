@@ -2442,7 +2442,7 @@ if( isset( $platform_text[1] ) ) {
 
 	<?php if(!empty($_SESSION['alert']['status'])){ ?>
 		<script>
-			document.getElementById('status_message').innerHTML = '<div class="alert alert-<?php echo $_SESSION['alert']['status']; ?> fade show m-b-0"><?php echo $_SESSION['alert']['message']; ?></div>';
+			document.getElementById('status_message').innerHTML = '<div class="alert alert-<?php echo $_SESSION['alert']['status']; ?> fade show m-b-0"><?php echo $_SESSION['alert']['message']; ?></div> <hr>';
 			setTimeout(function() {
 				$('#status_message').fadeOut('fast');
 			}, 5000);
