@@ -53,14 +53,6 @@ $time = explode( ' ', $time );
 $time = $time[1] + $time[0];
 $start = $time;
 
-// site db vars
-$query = $conn->query( "SELECT `name`,`value` FROM `system_settings` " );
-$globals_temp = $query->fetchAll( PDO::FETCH_ASSOC );
-
-foreach( $globals_temp as $bits ) {
-	$globals[$bits['name']] = $bits['value'];
-}
-
 // load database
 $database['hostname']			= '173.248.140.254';
 $database['database'] 			= 'ufx_loyalty_dashboard';
@@ -74,6 +66,14 @@ try{
 	$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 }catch( PDOException $e ) {
 	echo $e->getMessage();
+}
+
+// site db vars
+$query = $conn->query( "SELECT `name`,`value` FROM `system_settings` " );
+$globals_temp = $query->fetchAll( PDO::FETCH_ASSOC );
+
+foreach( $globals_temp as $bits ) {
+	$globals[$bits['name']] = $bits['value'];
 }
 
 // get clients ip address
