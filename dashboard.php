@@ -1036,195 +1036,6 @@ if( isset( $platform_text[1] ) ) {
 			</div>
 		<?php } ?>
 
-		<?php function projects() { ?>
-			<?php global $conn, $globals, $account_details, $geoip, $geoisp; ?>
-
-			<?php $clusters = get_projects(); ?>
-
-			<div id="content" class="content">
-				<ol class="breadcrumb float-xl-right">
-					<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-					<li class="breadcrumb-item active">Projects</li>
-				</ol>
-
-				<h1 class="page-header">Projects</h1>
-
-				<div id="status_message"></div>
-
-				<div class="row">
-					<div class="col-xl-12">
-						<div class="panel panel-inverse">
-							<div class="panel-heading">
-								<h4 class="panel-title">Projects</h4>
-								<div class="panel-heading-btn">
-									<div class="btn-group">
-										<?php if( $account_details['can_create_projects'] == 'yes') { ?>
-			        						<button class="btn btn-xs btn-green tutorial_add_cluster" data-toggle="modal" data-target="#project_add_modal">Add a Project</button>
-										<?php } else{ ?>
-			        						<button class="btn btn-xs btn-green tutorial_add_cluster" data-toggle="modal" data-target="#project_join_modal">Join a Project</button>
-										<?php } ?>
-										<a href="javascript:void(0);" class="btn btn-xs btn-info" onclick="tutorial();">Tutorial &amp; Help</a>
-									</div>
-								</div>
-							</div>
-							<div class="panel-body">
-								<?php if( !isset( $projects[0]['id'] ) ) { ?>
-									<center>
-										<?php if( $account_details['can_create_projects'] == 'yes') { ?>
-											<h2>You need to add a Project.</h2>
-										<?php } else { ?>
-											<h2>You need to join a Project.</h2>
-										<?php } ?>
-									</center>
-								<?php } else { ?>
-									<table id="table_clusters" class="table table-striped table-bordered table-td-valign-middle">
-										<thead>
-											<tr>
-												<th class="text-nowrap"><strong>Project</strong></th>
-												<th class="text-nowrap"><strong>URL</strong></th>
-												<th class="text-nowrap" data-orderable="false" width="1px"><strong>Actions</strong></th>
-											</tr>
-										</thead>
-										<tbody>
-											<?php
-												// build table
-												foreach( $projects as $project ) {
-
-													// output
-													echo '
-														<tr>
-															<td>
-																'.$project['name'].' 
-															</td>
-															<td>
-																'.$project['url'].' 
-															</td>
-															<td>
-																<button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">Actions<b class="caret"></b></button>
-																<div class="dropdown-menu dropdown-menu-right" role="menu">
-																	<a href="?c=cluster&id='.$cluster['id'].'" class="dropdown-item">Manage</a>
-																	<a href="?c=cluster_edit&id='.$cluster['id'].'" class="dropdown-item">Edit</a>
-
-																	<a href="actions.php?a=cluster_delete&id='.$cluster['id'].'" class="dropdown-item" onclick="return confirm(\'This will delete all proxies contained in this cluster. Are you sure?\')">Delete</a>
-																</div>
-															</td>
-														</tr>
-													';
-												}
-											?>
-										</tbody>
-									</table>
-								<?php } ?>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="modal fade" id="cluster_example_modal" tabindex="-1" role="dialog" aria-labelledby="cluster_example_modal" aria-hidden="true">
-			   	<div class="modal-dialog modal-notice modal-xl">
-			      	<div class="modal-content">
-			         	<div class="modal-header">
-			            	<h5 class="modal-title" id="myModalLabel">How Clusters Work</h5>
-			            	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-			            		x
-			            	</button>
-			         	</div>
-			         	<div class="modal-body">
-		               		<div class="row">
-		               			<div class="col-md-6 col-sm-12">
-		               				Welcome to <?php echo $globals['platform_name']; ?>. <br>
-		               				<br>
-									<?php echo $globals['platform_name']; ?> is a next generation content filtering, protection and performance platform, making it impossible for anyone, with malicious intent or otherwise, to make direct contact with your origin server(s), or to locate, identify or damage them in any way. <br>
-									<br>
-									Based on the principle of using proxy servers as a shield between your customers (or anyone else) and your origin server(s), and using the 'cluster' concept, you have one or more controller servers that manage your cluster of secure proxy servers. When anyone enters your website address the controller first checks that the connection is an authentic one and not a direct security risk, and then selects a suitable proxy server to direct the customer to. <br>
-									<br>
-									Once the customer connection has been passed to a suitable proxy server, it is the proxy server that will communicate with your origin server(s) directly and not your customer. This improves performance and security as each controller and proxy has multiple security checkpoints to mitigate any security risk. This includes SQL Injection, Sniffing, Port Scanning and many others. Once the proxy obtains the requested information from your origin server it is then relayed back to the customer. This happens for every connection request so it is important to make sure you have the correct number of available proxy servers in the cluster to support your customers and their traffic. <br>
-									<br>
-									This image on the right hand side is a very basic example of what happens when a connection is made to the cluster and how the customer never interacts with your origin servers directly. Your cluster must collectively have enough bandwidth to equally match that available over all your origin servers combined. So, if you have a combined bandwidth of 50Gbit over all your origin servers then you must have 50Gbit available over your entire cluster. We highly recommend that your cluster servers have 1Gbit connections and not higher connection rates. This enables the cluster to evenly spread your customers over the entire cluster. This presents you with the added benefit of increased redundancy and greater performance. <br>
-									<br>
-									If you have more questions, please submit a support ticket. 
-		               			</div>
-		               			<div class="col-md-6 col-sm-12">
-		                  			<img src="assets/img/cluster_example.svg" width="100%" alt="Example Reverse Cluster">
-		                  		</div>
-		               		</div>
-			         	</div>
-			         	<div class="modal-footer">
-			         		<div class="btn-group">
-								<button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Cancel</button>
-							</div>
-						</div>
-			      	</div>
-			   	</div>
-			</div>
-
-			<div class="modal fade" id="cluster_wizard_modal" tabindex="-1" role="dialog" aria-labelledby="cluster_wizard_modal" aria-hidden="true">
-			   	<div class="modal-dialog modal-notice modal-xl">
-			      	<div class="modal-content">
-			         	<div class="modal-header">
-			            	<h5 class="modal-title" id="myModalLabel">Cluster Design Wizard</h5>
-			            	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-			            		x
-			            	</button>
-			         	</div>
-			         	<div class="modal-body">
-		               		<div class="row">
-		               			<div class="col-md-6 col-sm-12">
-		               				This function is not available yet.
-		               			</div>
-		               		</div>
-			         	</div>
-			         	<div class="modal-footer">
-							<button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Cancel</button>
-						</div>
-			      	</div>
-			   	</div>
-			</div>
-
-			<form class="form" method="post" action="actions.php?a=cluster_add">
-				<div class="modal fade" id="cluster_add_modal" tabindex="-1" role="dialog" aria-labelledby="cluster_add_modal" aria-hidden="true">
-				   	<div class="modal-dialog modal-notice">
-				      	<div class="modal-content">
-				         	<div class="modal-header">
-				            	<h5 class="modal-title" id="myModalLabel">Add Cluster</h5>
-				            	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-				            		x
-				            	</button>
-				         	</div>
-				         	<div class="modal-body">
-			               		<div class="row">
-									<div class="col-xl-12">
-										<div class="form-group">
-											<label class="bmd-label-floating"><strong>Name</strong></label>
-											<input type="text" name="name" class="form-control" required/>
-											<small>Example: Awesome Cluster</small>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-xl-12">
-										<div class="form-group">
-											<label class="bmd-label-floating"><strong>Cluster Type</strong></label>
-											<select name="type" class="default-select2 form-control">
-												<option value="byos" selected>Bring Your Own Servers</option>
-												<option value="digitalocean" disabled>DigitalOcean Smart Cluster - Coming Soon</option>
-											</select>
-										</div>
-									</div>
-								</div>
-				         	</div>
-				         	<div class="modal-footer">
-				         		<div class="btn-group">
-									<button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Cancel</button>
-									<button type="submit" class="btn btn-xs btn-green">Add Cluster</button>
-								</div>
-							</div>
-				      	</div>
-				   	</div>
-				</div>
-			</form>
-		<?php } ?>
 
 		<?php function cluster_edit() { ?>
 			<?php global $conn, $globals, $account_details, $geoip, $geoisp; ?>
@@ -1813,150 +1624,6 @@ if( isset( $platform_text[1] ) ) {
 			</form>
 		<?php } ?>
 
-		<?php function domain_names() { ?>
-			<?php global $conn, $globals, $account_details, $geoip, $geoisp; ?>
-
-			<?php $domain_names = get_domain_names(); ?>
-
-			<div id="content" class="content">
-				<ol class="breadcrumb float-xl-right">
-					<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-					<li class="breadcrumb-item active">Domain Names</li>
-				</ol>
-
-				<h1 class="page-header">Domain Names</h1>
-
-				<div class="row">
-					<div class="col-xl-12">
-						<div class="panel">
-							<div class="panel-body">
-								<div class="row">
-									<div class="col-xl-12">
-										<div id="status_message"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-xl-12">
-						<div class="panel panel-inverse">
-							<div class="panel-heading">
-								<h4 class="panel-title">Domain Names</h4>
-								<div class="panel-heading-btn">
-									<div class="btn-group">
-		        						<button class="btn btn-xs btn-green tutorial_add_domain" data-toggle="modal" data-target="#domain_add_modal">Add Domain Name</button>
-										<a href="javascript:void(0);" class="btn btn-xs btn-info" onclick="tutorial();">Tutorial &amp; Help</a>
-									</div>
-								</div>
-							</div>
-							<div class="panel-body">
-								<?php if( !isset( $domain_names[0]['id'] ) ) { ?>
-									<center>
-										<h2>You need to add a Domain Name.</h2>
-									</center>
-								<?php } else { ?>
-									<table id="table_domain_names" class="table table-striped table-bordered table-td-valign-middle">
-										<thead>
-											<tr>
-												<th class="text-nowrap"><strong>Domain Name</strong></th>
-												<th class="text-nowrap" width="150px"><strong>Registrar</strong></th>
-												<th class="text-nowrap" width="1px"><strong>Expires</strong></th>
-												<th class="text-nowrap" width="200px"><strong>Status</strong></th>
-												<th class="text-nowrap" data-orderable="false" width="1px"><strong>Actions</strong></th>
-											</tr>
-										</thead>
-										<tbody>
-											<?php
-												// build table
-												foreach( $domain_names as $domain_name ) {
-													// build domain status
-													if( $domain_name['status'] == 'active' ) {
-														$domain_name['status'] ='<button class="btn btn-xs btn-success">Active</button>';
-													} elseif( $domain_name['status'] == 'pending' ) {
-														$domain_name['status'] ='<button class="btn btn-xs btn-info">Pending Nameserver Change</button>';
-													} elseif( $domain_name['status'] == 'suspended' ) {
-														$domain_name['status'] ='<button class="btn btn-xs btn-warning">Suspended</button>';
-													} elseif( $domain_name['status'] == 'blocked' ) {
-														$domain_name['status'] ='<button class="btn btn-xs btn-danger">Blocked</button>';
-													} elseif( $domain_name['status'] == 'moved' ) {
-														$domain_name['status'] ='<button class="btn btn-xs btn-danger">Moved Away</button>';
-													}
-
-													// expire cleanup
-													$domain_name['expires'] = explode( 'T', $domain_name['expires'] );
-													$domain_name['expires'] = $domain_name['expires'][0];
-
-													// output
-													echo '
-														<tr>
-															<td>
-																'.$domain_name['domain_name'].'
-															</td>
-															<td>
-																'.$domain_name['registrar'].'
-															</td>
-															<td>
-																'.$domain_name['expires'].'
-															</td>
-															<td>
-																'.$domain_name['status'].'
-															</td>
-															<td>
-																<button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">Actions<b class="caret"></b></button>
-																<div class="dropdown-menu dropdown-menu-right" role="menu">
-																	<a href="?c=domain_name&id='.$domain_name['id'].'" class="dropdown-item">Manage</a>
-																	<a href="actions.php?a=domain_name_delete&id='.$domain_name['id'].'" class="dropdown-item" onclick="return confirm(\'Deleting this domain name will suspend any active Clusters and servers using it. Are you sure?\')">Delete</a>
-																</div>
-															</td>
-														</tr>
-													';
-												}
-											?>
-										</tbody>
-									</table>
-								<?php } ?>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<form class="form" method="post" action="actions.php?a=domain_name_add">
-				<div class="modal fade" id="domain_add_modal" tabindex="-1" role="dialog" aria-labelledby="domain_add_modal" aria-hidden="true">
-				   	<div class="modal-dialog modal-notice">
-				      	<div class="modal-content">
-				         	<div class="modal-header">
-				            	<h5 class="modal-title" id="myModalLabel">Add Domain Name</h5>
-				            	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-				            		x
-				            	</button>
-				         	</div>
-				         	<div class="modal-body">
-			               		<div class="row">
-									<div class="col-xl-12">
-										<div class="form-group">
-											<label class="bmd-label-floating"><strong>Domain Name</strong></label>
-											<input type="text" name="domain_name" class="form-control" required/>
-											<small>Example: example.com</small>
-										</div>
-									</div>
-								</div>
-				         	</div>
-				         	<div class="modal-footer">
-				         		<div class="btn-group">
-									<button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Cancel</button>
-									<button type="submit" class="btn btn-xs btn-green">Add Domain Name</button>
-								</div>
-							</div>
-				      	</div>
-				   	</div>
-				</div>
-			</form>
-		<?php } ?>
-
 		<?php function home() { ?>
 			<?php global $conn, $globals, $account_details, $geoip, $geoisp; ?>
 
@@ -2065,6 +1732,197 @@ if( isset( $platform_text[1] ) ) {
 				</div>
 			</div>
 		<?php } ?>
+
+		<?php function projects() { ?>
+			<?php global $conn, $globals, $account_details, $geoip, $geoisp; ?>
+
+			<?php $clusters = get_projects(); ?>
+
+			<div id="content" class="content">
+				<ol class="breadcrumb float-xl-right">
+					<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+					<li class="breadcrumb-item active">Projects</li>
+				</ol>
+
+				<h1 class="page-header">Projects</h1>
+
+				<div id="status_message"></div>
+
+				<div class="row">
+					<div class="col-xl-12">
+						<div class="panel panel-inverse">
+							<div class="panel-heading">
+								<h4 class="panel-title">Projects</h4>
+								<div class="panel-heading-btn">
+									<div class="btn-group">
+										<?php if( $account_details['can_create_projects'] == 'yes') { ?>
+			        						<button class="btn btn-xs btn-green tutorial_add_cluster" data-toggle="modal" data-target="#project_add_modal">Add a Project</button>
+										<?php } else{ ?>
+			        						<button class="btn btn-xs btn-green tutorial_add_cluster" data-toggle="modal" data-target="#project_join_modal">Join a Project</button>
+										<?php } ?>
+										<a href="javascript:void(0);" class="btn btn-xs btn-info" onclick="tutorial();">Tutorial &amp; Help</a>
+									</div>
+								</div>
+							</div>
+							<div class="panel-body">
+								<?php if( !isset( $projects[0]['id'] ) ) { ?>
+									<center>
+										<?php if( $account_details['can_create_projects'] == 'yes') { ?>
+											<h2>You need to add a Project.</h2>
+										<?php } else { ?>
+											<h2>You need to join a Project.</h2>
+										<?php } ?>
+									</center>
+								<?php } else { ?>
+									<table id="table_clusters" class="table table-striped table-bordered table-td-valign-middle">
+										<thead>
+											<tr>
+												<th class="text-nowrap"><strong>Project</strong></th>
+												<th class="text-nowrap"><strong>URL</strong></th>
+												<th class="text-nowrap" data-orderable="false" width="1px"><strong>Actions</strong></th>
+											</tr>
+										</thead>
+										<tbody>
+											<?php
+												// build table
+												foreach( $projects as $project ) {
+
+													// output
+													echo '
+														<tr>
+															<td>
+																'.$project['name'].' 
+															</td>
+															<td>
+																'.$project['url'].' 
+															</td>
+															<td>
+																<button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">Actions<b class="caret"></b></button>
+																<div class="dropdown-menu dropdown-menu-right" role="menu">
+																	<a href="?c=cluster&id='.$cluster['id'].'" class="dropdown-item">Manage</a>
+																	<a href="?c=cluster_edit&id='.$cluster['id'].'" class="dropdown-item">Edit</a>
+
+																	<a href="actions.php?a=cluster_delete&id='.$cluster['id'].'" class="dropdown-item" onclick="return confirm(\'This will delete all proxies contained in this cluster. Are you sure?\')">Delete</a>
+																</div>
+															</td>
+														</tr>
+													';
+												}
+											?>
+										</tbody>
+									</table>
+								<?php } ?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="cluster_example_modal" tabindex="-1" role="dialog" aria-labelledby="cluster_example_modal" aria-hidden="true">
+			   	<div class="modal-dialog modal-notice modal-xl">
+			      	<div class="modal-content">
+			         	<div class="modal-header">
+			            	<h5 class="modal-title" id="myModalLabel">How Clusters Work</h5>
+			            	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+			            		x
+			            	</button>
+			         	</div>
+			         	<div class="modal-body">
+		               		<div class="row">
+		               			<div class="col-md-6 col-sm-12">
+		               				Welcome to <?php echo $globals['platform_name']; ?>. <br>
+		               				<br>
+									<?php echo $globals['platform_name']; ?> is a next generation content filtering, protection and performance platform, making it impossible for anyone, with malicious intent or otherwise, to make direct contact with your origin server(s), or to locate, identify or damage them in any way. <br>
+									<br>
+									Based on the principle of using proxy servers as a shield between your customers (or anyone else) and your origin server(s), and using the 'cluster' concept, you have one or more controller servers that manage your cluster of secure proxy servers. When anyone enters your website address the controller first checks that the connection is an authentic one and not a direct security risk, and then selects a suitable proxy server to direct the customer to. <br>
+									<br>
+									Once the customer connection has been passed to a suitable proxy server, it is the proxy server that will communicate with your origin server(s) directly and not your customer. This improves performance and security as each controller and proxy has multiple security checkpoints to mitigate any security risk. This includes SQL Injection, Sniffing, Port Scanning and many others. Once the proxy obtains the requested information from your origin server it is then relayed back to the customer. This happens for every connection request so it is important to make sure you have the correct number of available proxy servers in the cluster to support your customers and their traffic. <br>
+									<br>
+									This image on the right hand side is a very basic example of what happens when a connection is made to the cluster and how the customer never interacts with your origin servers directly. Your cluster must collectively have enough bandwidth to equally match that available over all your origin servers combined. So, if you have a combined bandwidth of 50Gbit over all your origin servers then you must have 50Gbit available over your entire cluster. We highly recommend that your cluster servers have 1Gbit connections and not higher connection rates. This enables the cluster to evenly spread your customers over the entire cluster. This presents you with the added benefit of increased redundancy and greater performance. <br>
+									<br>
+									If you have more questions, please submit a support ticket. 
+		               			</div>
+		               			<div class="col-md-6 col-sm-12">
+		                  			<img src="assets/img/cluster_example.svg" width="100%" alt="Example Reverse Cluster">
+		                  		</div>
+		               		</div>
+			         	</div>
+			         	<div class="modal-footer">
+			         		<div class="btn-group">
+								<button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Cancel</button>
+							</div>
+						</div>
+			      	</div>
+			   	</div>
+			</div>
+
+			<div class="modal fade" id="cluster_wizard_modal" tabindex="-1" role="dialog" aria-labelledby="cluster_wizard_modal" aria-hidden="true">
+			   	<div class="modal-dialog modal-notice modal-xl">
+			      	<div class="modal-content">
+			         	<div class="modal-header">
+			            	<h5 class="modal-title" id="myModalLabel">Cluster Design Wizard</h5>
+			            	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+			            		x
+			            	</button>
+			         	</div>
+			         	<div class="modal-body">
+		               		<div class="row">
+		               			<div class="col-md-6 col-sm-12">
+		               				This function is not available yet.
+		               			</div>
+		               		</div>
+			         	</div>
+			         	<div class="modal-footer">
+							<button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Cancel</button>
+						</div>
+			      	</div>
+			   	</div>
+			</div>
+
+			<form class="form" method="post" action="actions.php?a=cluster_add">
+				<div class="modal fade" id="cluster_add_modal" tabindex="-1" role="dialog" aria-labelledby="cluster_add_modal" aria-hidden="true">
+				   	<div class="modal-dialog modal-notice">
+				      	<div class="modal-content">
+				         	<div class="modal-header">
+				            	<h5 class="modal-title" id="myModalLabel">Add Cluster</h5>
+				            	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+				            		x
+				            	</button>
+				         	</div>
+				         	<div class="modal-body">
+			               		<div class="row">
+									<div class="col-xl-12">
+										<div class="form-group">
+											<label class="bmd-label-floating"><strong>Name</strong></label>
+											<input type="text" name="name" class="form-control" required/>
+											<small>Example: Awesome Cluster</small>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xl-12">
+										<div class="form-group">
+											<label class="bmd-label-floating"><strong>Cluster Type</strong></label>
+											<select name="type" class="default-select2 form-control">
+												<option value="byos" selected>Bring Your Own Servers</option>
+												<option value="digitalocean" disabled>DigitalOcean Smart Cluster - Coming Soon</option>
+											</select>
+										</div>
+									</div>
+								</div>
+				         	</div>
+				         	<div class="modal-footer">
+				         		<div class="btn-group">
+									<button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Cancel</button>
+									<button type="submit" class="btn btn-xs btn-green">Add Cluster</button>
+								</div>
+							</div>
+				      	</div>
+				   	</div>
+				</div>
+			</form>
+		<?php } ?>
+
 
 		<?php function settings() { ?>
 			<?php global $conn, $globals, $account_details, $geoip, $geoisp; ?>
