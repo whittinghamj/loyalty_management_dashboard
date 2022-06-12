@@ -1778,7 +1778,7 @@ if( isset( $platform_text[1] ) ) {
 											<tr>
 												<th class="text-nowrap"><strong>Project</strong></th>
 												<th class="text-nowrap"><strong>URL</strong></th>
-												<th class="text-nowrap" width="100px"><strong>Membership</strong></th>
+												<th class="text-nowrap" width="1pc"><strong>Membership</strong></th>
 												<th class="text-nowrap" width="1px"><strong>Status</strong></th>
 												<th class="text-nowrap" data-orderable="false" width="1px"><strong>Actions</strong></th>
 											</tr>
@@ -1791,9 +1791,9 @@ if( isset( $platform_text[1] ) ) {
 													// membership
 													foreach( $user_tokens as $user_token ) {
 														if( $user_token['project_id'] == $project['id'] ) {
-															$project['membership_styled'] = '<button class="btn btn-xs btn-success btn-block">Member</button>';
+															$project['membership_styled'] = '<button class="btn btn-xs btn-success btn-block">Active</button>';
 														} else {
-															$project['membership_styled'] = '<button class="btn btn-xs btn-danger btn-block">Not a Member</button>';
+															$project['membership_styled'] = '<button class="btn btn-xs btn-danger btn-block">In-active</button>';
 														}
 													}
 
