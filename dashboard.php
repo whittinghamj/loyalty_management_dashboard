@@ -20,10 +20,10 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 // build platform logo text
 $platform_text = explode( $globals['platform_name'] );
 if( isset( $platform_text[1] ) ) {
-	$name_1 = $platform_text[0]
+	$name_1 = $platform_text[0];
 	unset( $platform_text[0] );
 	$name_rest = implode( ' ', $platform_text );
-	$globals['platform_name_styled'] = '<b><font color="#f09230">'.$name_1].'</font> '.$name_rest.'</b>'
+	$globals['platform_name_styled'] = '<b><font color="#f09230">'.$name_1.'</font> '.$name_rest.'</b>';
 } else {
 	$globals['platform_name_styled'] = '<b><font color="#f09230">'.$globals['platform_name'].'</font></b>';
 }
