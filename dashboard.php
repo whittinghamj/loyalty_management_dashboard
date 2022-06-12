@@ -2046,6 +2046,20 @@ if( !isset( $_SESSION['logged_in'] ) || $_SESSION['logged_in'] != true ) {
 							</div>
 						</div>
 					</div>
+					<?php if( $account_details['is_platform_admin'] == 'yes' ) { ?>
+						<div class="col-xl-3 col-md-6">
+							<div class="widget widget-stats bg-success tutorial_total_controllers">
+								<!-- <div class="stats-icon"><i class="fa fa-btc"></i></div> -->
+								<div class="stats-info">
+									<h4>Platform Users</h4>
+									<p><?php echo total_platform_users(); ?></p>	
+								</div>
+								<div class="stats-link">
+									<a href="?c=projects">View Users <i class="fa fa-arrow-alt-circle-right"></i></a>
+								</div>
+							</div>
+						</div>
+					<?php } ?>
 				</div>
 
 				<div class="row">

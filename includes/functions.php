@@ -451,6 +451,19 @@ function total_tokens() {
 	return $data;
 }
 
+function total_platform_users() {
+	global $conn, $account_details, $globals, $whmcs;
+
+	$query = $conn->query( "
+		SELECT count(`id`) as total_platform_users 
+		FROM `users` 
+	" );
+	$results	= $query->fetch( PDO::FETCH_ASSOC );
+	$data	   = $results['total_platform_users'];
+
+	return $data;
+}
+
 function total_domain_names() {
 	global $conn, $account_details, $globals, $whmcs;
 
@@ -461,6 +474,22 @@ function total_domain_names() {
 	" );
 	$results	= $query->fetch( PDO::FETCH_ASSOC );
 	$data	   = $results['total_domain_names'];
+
+	return $data;
+}
+
+function total_servers( $id ) {
+	global $conn, $account_details, $globals, $whmcs;
+
+	$query = $conn->query( "
+		SELECT count(`id`) as total_servers 
+		FROM `servers` 
+		WHERE `cluster_id` = '".$id."'
+		AND `user_id` = '".$_SESSION['account']['id']."' 
+		AND `type` = '".$type."' 
+	" );
+	$results	= $query->fetch( PDO::FETCH_ASSOC );
+	$data	   = $results['total_servers'];
 
 	return $data;
 }
