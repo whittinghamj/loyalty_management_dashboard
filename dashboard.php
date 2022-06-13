@@ -2335,7 +2335,7 @@ if( isset( $platform_text[1] ) ) {
 		</script>
 	<?php } ?>
 
-	<?php if( get( 'c' ) == 'clusters' ) { ?>
+	<?php if( get( 'c' ) == 'projects' ) { ?>
 		<script type="text/javascript">
 			// data tables > table_projects
 			$(function () {
@@ -2398,7 +2398,7 @@ if( isset( $platform_text[1] ) ) {
 		</script>
 	<?php } ?>
 
-	<?php if( get( 'c' ) == 'cluster_edit' ) { ?>
+	<?php if( get( 'c' ) == 'project_edit' ) { ?>
 		<script type="text/javascript">
 			// data tables > table_blocked_networks
 			$(function () {
