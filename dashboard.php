@@ -1790,9 +1790,9 @@ if( isset( $platform_text[1] ) ) {
 
 													// ownership
 													if( $project['owner_id'] == $account_details['id'] ) {
-														$owner = 'You own this project.';
+														$owner = true;
 													} else {
-														$owner = '';
+														$owner = false;
 													}
 													// membership
 													foreach( $user_tokens as $user_token ) {
@@ -1817,7 +1817,7 @@ if( isset( $platform_text[1] ) ) {
 														<tr>
 															<td>
 																'.$project['name'].' 
-																'.( !empty( $owner ) ? '<br><small><strong>'.$owner.'</strong></small>' : '' ).'
+																'.( isset( $owner ) ? '<i class="fa fa-home" aria-hidden="true" style="color:green"></i>' : '' ).'
 															</td>
 															<td>
 																'.$project['url'].' 
