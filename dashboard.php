@@ -1817,7 +1817,7 @@ if( isset( $platform_text[1] ) ) {
 														<tr>
 															<td>
 																'.$project['name'].' 
-																'.( !empty( $owner ) ? $owner : '' ).'
+																'.( !empty( $owner ) ? '<br><small><strong>'.$owner.'</strong></small>' : '' ).'
 															</td>
 															<td>
 																'.$project['url'].' 
