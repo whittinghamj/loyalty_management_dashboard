@@ -1773,7 +1773,7 @@ if( isset( $platform_text[1] ) ) {
 									<h2>You need to add or join a Project.</h2>
 									</center>
 								<?php } else { ?>
-									<table id="table_clusters" class="table table-striped table-bordered table-td-valign-middle">
+									<table id="table_projects" class="table table-striped table-bordered table-td-valign-middle">
 										<thead>
 											<tr>
 												<th class="text-nowrap"><strong>Project</strong></th>
@@ -2337,9 +2337,9 @@ if( isset( $platform_text[1] ) ) {
 
 	<?php if( get( 'c' ) == 'clusters' ) { ?>
 		<script type="text/javascript">
-			// data tables > table_clusters
+			// data tables > table_projects
 			$(function () {
-				$( '#table_clusters' ).DataTable({
+				$( '#table_projects' ).DataTable({
 					"order": [[ 0, "asc" ]],
 					"responsive": true,
 					"columnDefs": [{
