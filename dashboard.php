@@ -1788,6 +1788,12 @@ if( isset( $platform_text[1] ) ) {
 												// build table
 												foreach( $projects as $project ) {
 
+													// ownership
+													if( $project['owner_id'] == $account_details['id'] ) {
+														$owner = 'You own this project.';
+													} else {
+														$owner = '';
+													}
 													// membership
 													foreach( $user_tokens as $user_token ) {
 														if( $user_token['project_id'] == $project['id'] ) {
@@ -1811,6 +1817,7 @@ if( isset( $platform_text[1] ) ) {
 														<tr>
 															<td>
 																'.$project['name'].' 
+																'.( !empty( $owner ) ? $owner : '' ).'
 															</td>
 															<td>
 																'.$project['url'].' 
@@ -1824,11 +1831,11 @@ if( isset( $platform_text[1] ) ) {
 															<td>
 																<button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">Actions<b class="caret"></b></button>
 																<div class="dropdown-menu dropdown-menu-right" role="menu">
-																	<a href="?c=project&id='.$project['id'].'" class="dropdown-item">Manage</a>
+																	<a href="?c=project&id='.$project['id'].'" class="dropdown-item">View</a>
 																	
 																	'.( $project['user_id'] == $account_details['id'] ? '<a href="?c=project_edit&id='.$project['id'].'" class="dropdown-item">Edit</a>' : '' ).'
 
-																	<a href="actions.php?a=cluster_delete&id='.$project['id'].'" class="dropdown-item" onclick="return confirm(\'This will delete all proxies contained in this cluster. Are you sure?\')">Delete</a>
+																	'.( $project['user_id'] == $account_details['id'] ? '<a href="actions.php?a=project_delete&id='.$project['id'].'" class="dropdown-item" onclick="return confirm(\'This will delete all data relating to this project including user and project stats and related data. Are you sure?\')">Delete</a>' : '' ).'
 																</div>
 															</td>
 														</tr>
