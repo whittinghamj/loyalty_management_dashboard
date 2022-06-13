@@ -1817,7 +1817,7 @@ if( isset( $platform_text[1] ) ) {
 														<tr>
 															<td>
 																'.$project['name'].' 
-																'.( isset( $owner ) ? '<i class="fa fa-home" aria-hidden="true" style="color:green"></i>' : '' ).'
+																'.( $owner == true ? '<i class="fa fa-home" aria-hidden="true" style="color:green"></i>' : '' ).'
 															</td>
 															<td>
 																'.$project['url'].' 
