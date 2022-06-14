@@ -1821,7 +1821,7 @@ if( isset( $platform_text[1] ) ) {
 													echo '
 														<tr>
 															<td>
-																'.$project['name'].' 
+																'.$project['id'].') '.$project['name'].' 
 																'.( $owner == true ? '<i class="fa fa-check" aria-hidden="true" style="color:green"></i>' : '' ).'
 															</td>
 															<td>
