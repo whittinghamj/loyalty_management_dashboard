@@ -1768,6 +1768,11 @@ if( isset( $platform_text[1] ) ) {
 								</div>
 							</div>
 							<div class="panel-body">
+								<?php
+									echo '<pre>';
+									print_r( $user_tokens );
+									echo '</pre>';
+								?> <hr>
 								<?php if( !isset( $projects[0]['id'] ) ) { ?>
 									<center>
 									<h2>You need to add or join a Project.</h2>
