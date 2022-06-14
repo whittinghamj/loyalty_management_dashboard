@@ -1771,8 +1771,11 @@ if( isset( $platform_text[1] ) ) {
 							<div class="panel-body">
 								<?php
 									echo '<pre>';
+									echo '<h2>$projects</h2>';
 									print_r( $projects );
+									echo '<h2>$user_projects</h2>';
 									print_r( $user_projects );
+									echo '<h2>$user_tokens</h2>';
 									print_r( $user_tokens );
 									echo '</pre>';
 								?> <hr>
