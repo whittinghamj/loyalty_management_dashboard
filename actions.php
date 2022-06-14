@@ -104,7 +104,7 @@ function project_add() {
 
 	// save data
 	$insert = $conn->exec( "INSERT INTO `projects` 
-		(`added`,`user_id`,`name`)
+		(`added`,`owner_id`,`name`)
 		VALUE
 		('".time()."',
 		'".$_SESSION['account']['id']."', 

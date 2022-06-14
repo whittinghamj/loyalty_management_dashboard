@@ -181,6 +181,7 @@ function get_projects() {
 	$query = $conn->query( "
 		SELECT * 
 		FROM `projects` 
+		ORDER BY `name`
 	" );
 
 	$data		   = $query->fetchAll( PDO::FETCH_ASSOC );

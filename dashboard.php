@@ -1871,7 +1871,12 @@ if( isset( $platform_text[1] ) ) {
 												<?php 
 													foreach( $projects as $project ) {
 														if( $project['status'] == 'active' ) {
-															echo '<option value="'.$project['id'].'">'.$project['name'].'</option>';
+															if( $owner == true ) {
+																echo '<option value="'.$project['id'].'" disabled>'.$project['name'].'</option>';
+															} else {
+																echo '<option value="'.$project['id'].'">'.$project['name'].'</option>';
+															}
+															
 														}
 													}
 												?>
