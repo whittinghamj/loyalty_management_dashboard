@@ -1787,13 +1787,13 @@ if( isset( $platform_text[1] ) ) {
 											<?php
 												// build table
 												foreach( $projects as $project ) {
-
 													// ownership
 													if( $project['owner_id'] == $account_details['id'] ) {
 														$owner = true;
 													} else {
 														$owner = false;
 													}
+
 													// membership
 													foreach( $user_tokens as $user_token ) {
 														if( $user_token['project_id'] == $project['id'] ) {
@@ -1870,6 +1870,13 @@ if( isset( $platform_text[1] ) ) {
 												<option value="0" selected disabled>Select a project to join</option>
 												<?php 
 													foreach( $projects as $project ) {
+														// ownership
+														if( $project['owner_id'] == $account_details['id'] ) {
+															$owner = true;
+														} else {
+															$owner = false;
+														}
+														
 														if( $project['status'] == 'active' ) {
 															if( $owner == true ) {
 																echo '<option value="'.$project['id'].'" disabled>'.$project['name'].'</option>';
