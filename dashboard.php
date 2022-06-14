@@ -1742,7 +1742,7 @@ if( isset( $platform_text[1] ) ) {
 			<?php global $conn, $globals, $account_details, $geoip, $geoisp; ?>
 
 			<?php $projects = get_projects(); ?>
-			<?php $user_projects = get_user_projects(); ?>
+			<?php $user_projects = get_user_projects( $account_details['id'] ); ?>
 			<?php $user_tokens = get_user_tokens( $account_details['id'] ); ?>
 
 			<div id="content" class="content">
