@@ -1742,7 +1742,8 @@ if( isset( $platform_text[1] ) ) {
 			<?php global $conn, $globals, $account_details, $geoip, $geoisp; ?>
 
 			<?php $projects = get_projects(); ?>
-			<?php $user_tokens = get_user_tokens(); ?>
+			<?php $user_projects = get_user_projects(); ?>
+			<?php $user_tokens = get_user_tokens( $account_details['id'] ); ?>
 
 			<div id="content" class="content">
 				<ol class="breadcrumb float-xl-right">
@@ -1762,7 +1763,7 @@ if( isset( $platform_text[1] ) ) {
 								<div class="panel-heading-btn">
 									<div class="btn-group">
 			        					<button class="btn btn-xs btn-green" data-toggle="modal" data-target="#project_add_modal">Add a Project</button>
-										<button class="btn btn-xs btn-green" data-toggle="modal" data-target="#project_join_modal">Join a Project</button>
+										<button class="btn btn-xs btn-blue" data-toggle="modal" data-target="#project_join_modal">Join a Project</button>
 										<a href="javascript:void(0);" class="btn btn-xs btn-info" onclick="tutorial();">Tutorial &amp; Help</a>
 									</div>
 								</div>
@@ -1770,6 +1771,8 @@ if( isset( $platform_text[1] ) ) {
 							<div class="panel-body">
 								<?php
 									echo '<pre>';
+									print_r( $projects );
+									print_r( $user_projects );
 									print_r( $user_tokens );
 									echo '</pre>';
 								?> <hr>
@@ -1791,30 +1794,39 @@ if( isset( $platform_text[1] ) ) {
 										<tbody>
 											<?php
 												// build table
-												foreach( $projects as $project ) {
+												foreach( $user_projects as $user_project ) {
 													// ownership
+													/*
 													if( $project['owner_id'] == $account_details['id'] ) {
 														$owner = true;
 													} else {
 														$owner = false;
 													}
+													*/
+
+													// find project
+													foreach( $projects as $project ) {
+														if( $project['id'] = $user_project['project_id'] ) {
+															break;
+														}
+													}
 
 													// membership
 													foreach( $user_tokens as $user_token ) {
-														if( $user_token['project_id'] == $project['id'] ) {
-															$project['membership_styled'] = '<button class="btn btn-xs btn-success btn-block">Active</button>';
+														if( $user_token['project_id'] == $user_project['id'] ) {
+															$membership = '<button class="btn btn-xs btn-success btn-block">Active</button>';
 														} else {
-															$project['membership_styled'] = '<button class="btn btn-xs btn-danger btn-block">Inactive</button>';
+															$membership = '<button class="btn btn-xs btn-danger btn-block">Inactive</button>';
 														}
 													}
 
 													// project status
 													if( $project['status'] == 'active' ) { 
-														$project['status_styled'] = '<button class="btn btn-xs btn-success btn-block">Active</button>';
+														$project_status = '<button class="btn btn-xs btn-success btn-block">Active</button>';
 													} elseif( $project['status'] == 'suspended' ) { 
-														$project['status_styled'] = '<button class="btn btn-xs btn-warning btn-block">Suspended</button>';
+														$project_status = '<button class="btn btn-xs btn-warning btn-block">Suspended</button>';
 													} elseif( $project['status'] == 'retired' ) { 
-														$project['status_styled'] = '<button class="btn btn-xs btn-danger btn-block">Retired</button>';
+														$project_status = '<button class="btn btn-xs btn-danger btn-block">Retired</button>';
 													}
 
 													// output
@@ -1828,10 +1840,10 @@ if( isset( $platform_text[1] ) ) {
 																'.$project['url'].' 
 															</td>
 															<td>
-																'.$project['membership_styled'].' 
+																'.$membership.' 
 															</td>
 															<td>
-																'.$project['status_styled'].' 
+																'.$project_status.' 
 															</td>
 															<td>
 																<button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">Actions<b class="caret"></b></button>

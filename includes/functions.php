@@ -175,13 +175,28 @@ function search_multi_array( $dataArray, $search_value, $key_to_search ) {
 	return $keys;
 }
 
+function admin_check () {
+	global $account_details, $globals;
+
+	// is admin check
+	if( $account_details['platform_admin'] == 'yes' ) {
+		$admin == true;
+	} else {
+		$admin = false;
+	}
+
+	return $admin;
+}
+
 function get_projects() {
 	global $conn, $account_details, $globals, $whmcs;
+
+	// admin check
+	$admin = admin_check();
 
 	$query = $conn->query( "
 		SELECT * 
 		FROM `projects` 
-		ORDER BY `name`
 	" );
 
 	$data		   = $query->fetchAll( PDO::FETCH_ASSOC );
@@ -191,12 +206,32 @@ function get_projects() {
 	return $data;
 }
 
-function get_user_tokens() {
+function get_user_projects( $user_id ) {
+	global $conn, $account_details, $globals, $whmcs;
+
+	// admin check
+	$admin = admin_check();
+
+	$query = $conn->query( "
+		SELECT * 
+		FROM `user_project_relationship` 
+		WHERE `user_id` = '".$user_id."' 
+	" );
+
+	$data		   = $query->fetchAll( PDO::FETCH_ASSOC );
+
+	$data = stripslashes_deep( $data );
+
+	return $data;
+}
+
+function get_user_tokens( $user_id ) {
 	global $conn, $account_details, $globals, $whmcs;
 
 	$query = $conn->query( "
 		SELECT * 
-		FROM `user_tokens` 
+		FROM `user_token_relationship` 
+		WHERE `user_id` = '".$user_id."' 
 	" );
 
 	$data		   = $query->fetchAll( PDO::FETCH_ASSOC );
