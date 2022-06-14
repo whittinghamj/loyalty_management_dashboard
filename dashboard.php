@@ -1866,7 +1866,7 @@ if( isset( $platform_text[1] ) ) {
 									<div class="col-xl-12">
 										<div class="form-group">
 											<label class="bmd-label-floating"><strong>Name</strong></label>
-											<select name="project_id" class="default-select2 form-control">
+											<select id="sel" name="project_id" class="default-select2 form-control">
 												<option value="0" selected disabled>Select a project to join</option>
 												<?php 
 													foreach( $projects as $project ) {
@@ -1876,7 +1876,16 @@ if( isset( $platform_text[1] ) ) {
 														} else {
 															$owner = false;
 														}
-														
+
+														// membership
+														foreach( $user_tokens as $user_token ) {
+															if( $user_token['project_id'] == $project['id'] ) {
+																$member == true;
+															} else {
+																$member == false;
+															}
+														}
+
 														if( $project['status'] == 'active' ) {
 															if( $owner == true ) {
 																echo '<option value="'.$project['id'].'" disabled>'.$project['name'].'</option>';
@@ -2873,7 +2882,7 @@ if( isset( $platform_text[1] ) ) {
 		</script>
 	<?php } ?>
 
-	<?php if( get( 'c' ) != 'staging' && $account_details['accept_terms'] == 'offline' ){ ?>
+	<?php if( get( 'c' ) != 'staging' && $account_details['accept_terms'] == 'no' ){ ?>
 		<script>
 		    $( window).on( 'load',function() {
                 $( '#modal-terms' ).modal( { 
@@ -2891,5 +2900,11 @@ if( isset( $platform_text[1] ) ) {
             } );
 		</script>
 	<?php } ?>
+
+	<script>
+		$(document).ready(function(){
+			$("#sel").select2();
+		});
+	</script>
 </body>
 </html>
