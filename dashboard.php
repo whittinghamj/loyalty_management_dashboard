@@ -2900,11 +2900,5 @@ if( isset( $platform_text[1] ) ) {
             } );
 		</script>
 	<?php } ?>
-
-	<script>
-		$(document).ready(function(){
-			$("#sel").select2();
-		});
-	</script>
 </body>
 </html>
